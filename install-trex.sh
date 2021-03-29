@@ -6,3 +6,7 @@ sudo cp  $HOME/trex-configuration/trex_cfg.yaml /etc/trex_cfg.yaml
 sudo ./dpdk_setup_ports.py -s
 rm stl/udp_for_benchmarks.py
 sudo cp  $HOME/trex-configuration/udp_for_benchmarks.py stl/
+sudo pip3 install pandas
+cp scripts/mlffr.py $HOME/v2.87
+cp scripts/load_xdp.py $HOME/
+cp scripts/unload_xdp.py $HOME/
