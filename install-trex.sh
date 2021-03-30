@@ -8,5 +8,7 @@ rm stl/udp_for_benchmarks.py
 sudo cp  $HOME/trex-configuration/udp_for_benchmarks.py stl/
 sudo pip3 install pandas
 cp scripts/mlffr.py $HOME/v2.87
-cp scripts/load_xdp.py $HOME/
-cp scripts/unload_xdp.py $HOME/
+cp scripts/run_mlffr.py $HOME/v2.87
+echo "Generating Public Key:"
+ssh-keygen
+cat $HOME/.ssh/id_rsa.pub

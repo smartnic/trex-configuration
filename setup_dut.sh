@@ -10,4 +10,6 @@ sudo ifconfig ens3f0 mtu 3498
 sudo ifconfig ens3f1 mtu 3498
 sudo ethtool --set-priv-flags ens3f0 rx_striding_rq off
 sudo ethtool -G ens3f0 rx 256
+cp $HOME/trex-configuration/scripts/load_xdp.py $HOME/
+cp $HOME/trex-configuration/scripts/unload_xdp.py $HOME/
 echo "DONE"

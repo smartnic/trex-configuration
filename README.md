@@ -10,8 +10,9 @@ On node1:
 5) `sudo reboot`
 6) cd trex-configuration
 7) Install T-Rex `./install-trex.sh`
-8) Add `export PYTHONPATH = $HOME/v2.87/automation/trex_control_plane/interactive` to profile 
-9) Generate SSH key `ssh-keygen` and add it to cloudlab (takes a while before it comes into effect)
+8) Add outputted key to cloudlab.
+9) Add `export PYTHONPATH=$HOME/v2.87/automation/trex_control_plane/interactive` to profile 
+
 
 On node0:
 1) Clone repository `git clone https://github.com/smartnic/trex-configuration.git`
