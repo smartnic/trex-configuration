@@ -74,7 +74,7 @@ if __name__ == "__main__":
                 #print(pps)
             temp = pd.DataFrame()
             temp[f"{rate}_tx"] = tx_pps
-            temp[f"{rate}_rx"] = tx_pps
+            temp[f"{rate}_rx"] = rx_pps
             temp[f"{rate}_min"] = min_l
             temp[f"{rate}_max"] = max_l
             temp[f"{rate}_avg"] = avg_l
