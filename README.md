@@ -36,7 +36,7 @@ On node0:
 ### Run with manual loading
 1) Start Trex on Node1:  `cd v2.87; sudo ./t-rex-64 -i -c 14`
 2) Load XDP program: `./load_and_run.sh`
-3) Start MLFFR: `cd v2.87; python3 mlffr.py`
+3) Start MLFFR: `cd v2.87; python3 mlffr.py -d $directory -v $version`
 
 ### Run through t-rex console
 **Node 1 (Traffic Generator):**
