@@ -24,7 +24,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Information about Data')
     parser.add_argument('-d', dest="directory", type=str, help='Directory', required=True)
     parser.add_argument('-v', dest="version", type=str, help='Name of version (e.g o1, o2, s0, s1, s2, s3, s4)', required=True)
-    parser.add_argument('-r', dest="run", type=str, help='Number of the run', required=True)
+    parser.add_argument('-r', dest="run", type=str, help='Number of the run', default="0")
     parser.add_argument('-tx', dest="tx", type=int, help='Port # you want to send packets through', default=0)
     parser.add_argument('-rx', dest="rx", type=int, help='Port # you want to measure recieve packets', default=1)
     parser.add_argument('-t', dest="time", type=int, help='How long(secs) you want to send packets', default=100)
