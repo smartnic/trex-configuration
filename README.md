@@ -58,3 +58,13 @@ Detach xdp_fwd = `sudo ./xdp_fwd -d ens3f0 ens3f1`
 `start -f stl/udp_for_benchmarks.py -t packet_len=64,stream_count=2 --port 0 -m 148mpps # you might have to do stl/`
 
 Note: To open latency statistics in the traffic generator console press ESC then L .
+
+## Device Under Test Configurations
+
+| Command | Description |
+| --- | --- |
+| `sudo ./xdp-paper/benchmarks/setup_rxqueues.sh ens3f0` | Linux Receive Side Scaling | 
+| `sudo ./xdp-paper/benchmarks/jbrouer_setup05_no_netfilter.sh` | IRQ Affinities for NIC receive queues |
+| `sudo ethtool --set-priv-flags ens3f0 rx_striding_rq off` | PCIe descriptor compression |
+| `sudo ifconfig ens3f1 mtu 3498` | Maximum MTU for Mellanox Driver to support BPF |
+| `sudo ethtool -G ens3f0 rx 256`| RX descriptor ring size for the NIC |
