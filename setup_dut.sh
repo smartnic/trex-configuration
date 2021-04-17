@@ -17,7 +17,7 @@ sudo ethtool -G $1 rx 256
 cp $HOME/trex-configuration/scripts/load_xdp.py $HOME/
 cp $HOME/trex-configuration/scripts/unload_xdp.py $HOME/
 echo "Running RSS"
-./rss.sh $1
+sudo ./rss.sh $1
 echo "Running IRQ"
-./irq.sh $1
+sudo ./irq.sh $1
 echo "DONE"
