@@ -1,5 +1,6 @@
-if [ "$#" -ne 3 || "$#" -ne 2]; then
+if [[ ("$#" -ne 2 && "$#" -ne 1) ]]; then
     echo "Illegal number of parameters. Run with ./setup_dut.sh <receiving interface> <sending interface>. If both are the same, just send in one interface."
+    exit 
 fi
 cd ~
 sudo apt-get update
@@ -17,7 +18,7 @@ sudo ethtool -G $1 rx 256
 cp $HOME/trex-configuration/scripts/load_xdp.py $HOME/
 cp $HOME/trex-configuration/scripts/unload_xdp.py $HOME/
 echo "Running RSS"
-sudo ./rss.sh $1
+sudo ./$HOME/trex-configuration/rss.sh $1
 echo "Running IRQ"
-sudo ./irq.sh $1
+sudo /$HOME/trex-configuration/irq.sh $1
 echo "DONE"
