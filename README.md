@@ -63,8 +63,8 @@ Note: To open latency statistics in the traffic generator console press ESC then
 
 | Command | Description |
 | --- | --- |
-| `sudo ./xdp-paper/benchmarks/setup_rxqueues.sh ens3f0` | Linux Receive Side Scaling | 
-| `sudo ./xdp-paper/benchmarks/jbrouer_setup05_no_netfilter.sh` | IRQ Affinities for NIC receive queues |
-| `sudo ethtool --set-priv-flags ens3f0 rx_striding_rq off` | PCIe descriptor compression |
-| `sudo ifconfig ens3f1 mtu 3498` | Maximum MTU for Mellanox Driver to support BPF |
-| `sudo ethtool -G ens3f0 rx 256`| RX descriptor ring size for the NIC |
+| `sudo ./rss.sh <receive interface>` | Linux Receive Side Scaling | 
+| `sudo ./irq.sh <recieve interface>` | IRQ Affinities for NIC receive queues |
+| `sudo ethtool --set-priv-flags <recieve interface> rx_striding_rq off` | PCIe descriptor compression |
+| `sudo ifconfig <recieve interface> mtu 3498; sudo ifconfig <send interface> mtu 3498; ` | Maximum MTU for Mellanox Driver to support BPF |
+| `sudo ethtool -G <recieve interface> rx 256`| RX descriptor ring size for the NIC |
