@@ -17,8 +17,10 @@ sudo ethtool --set-priv-flags $1 rx_striding_rq off
 sudo ethtool -G $1 rx 256
 cp $HOME/trex-configuration/scripts/load_xdp.py $HOME/
 cp $HOME/trex-configuration/scripts/unload_xdp.py $HOME/
+cd $HOME/trex-configuration/
 echo "Running RSS"
-sudo ./$HOME/trex-configuration/rss.sh $1
+sudo ./rss.sh $1
 echo "Running IRQ"
-sudo /$HOME/trex-configuration/irq.sh $1
+sudo ./irq.sh $1
+cd $HOME
 echo "DONE"
