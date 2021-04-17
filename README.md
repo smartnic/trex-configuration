@@ -39,19 +39,18 @@ On node0:
 3) Start MLFFR: `cd v2.87; python3 mlffr.py -d $directory -v $version`
 
 ### Run through t-rex console
-**Node 1 (Traffic Generator):**
-`cd MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.8-x86_64/v2.87/`
-Start the t-rex on node 1: `sudo ./t-rex-64 -i -c 14`  
+**Node 1 (Traffic Generator):**  
+`cd MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.8-x86_64/v2.87/`   
+Start the t-rex on node 1: `sudo ./t-rex-64 -i -c 14` 
 
 **Node 0 (Device Under Test):**
-Load Sample xdp Programs
-Load xdp_fwd = `sudo ./samples/bpf/xdp_fwd ens3f0 ens3f1`
-Load xdp_rxq = 
-`sudo ./samples/bpf/xdp_rxq_info --dev ens3f0 --action XDP_DROP`
-`sudo ./samples/bpf/xdp_rxq_info --dev ens3f0 --action XDP_TX --swapmac`
-Detach xdp_fwd = `sudo ./xdp_fwd -d ens3f0 ens3f1`  
+Load Sample xdp Program. For example,  
+Load xdp_fwd = `sudo ./samples/bpf/xdp_fwd ens3f0 ens3f1`   
+Load xdp_rxq =    
+`sudo ./samples/bpf/xdp_rxq_info --dev ens3f0 --action XDP_DROP`    
+`sudo ./samples/bpf/xdp_rxq_info --dev ens3f0 --action XDP_TX --swapmac`    
 
-**Node 1 (Traffic Generator):**
+**Node 1 (Traffic Generator):**   
 `cd MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.8-x86_64/v2.87/`  
 `./trex-console`  
 `tui`  
