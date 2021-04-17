@@ -1,10 +1,10 @@
 import os
 from os.path import expanduser
 import argparse 
-
+benchmarks = ["xdp1", "xdp2", "xdp_pktcntr", "xdp_redirect", "xdp_map_access", "xdp_fw", "xdp_router_ipv4", "xdp_fwd"]
 home = expanduser("~")
 parser = argparse.ArgumentParser(description='Information about Data')
-parser.add_argument('-b', dest="benchmark", type=str, help=f"Benchmark {str(programs.keys())}", required=True)
+parser.add_argument('-b', dest="benchmark", type=str, help=f"Benchmark {str(benchmarks)}", required=True)
 args = parser.parse_args()
 
 # read interfaces

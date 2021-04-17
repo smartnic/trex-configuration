@@ -35,12 +35,12 @@ for x in range (args.number):
     for v in versionList:
         print(f"Running {v}")
         print(f"Loading xdp...")
-        os.system(f"ssh -p 22 {node0} \"sh -c 'python3 -u load_xdp.py -b {args.benchmark} -v O1 1>log.txt 2>err.txt &'\"")
+        os.system(f"ssh -p 22 {node0} \"sh -c 'python3 -u $HOME/trex-configuration/scripts/load_xdp.py -b {args.benchmark} -v O1 1>log.txt 2>err.txt &'\"")
         time.sleep(60)
         print("MLFFR...")
         os.system(f"python3 -u mlffr.py -d {args.directory} -v {v} -r {x} -mS 4.4 -mE 5.4 -i 0.1 -rx 0")
         print("Unloading xdp")
-        os.system(f"ssh -p 22 {node0} 'python3 unload_xdp.py {args.benchmark}; exit'")
+        os.system(f"ssh -p 22 {node0} 'python3 $HOME/trex-configuration/scripts/unload_xdp.py {args.benchmark}; exit'")
         time.sleep(60)
 
 print("Stopping T-rex and all its children")
