@@ -1,7 +1,22 @@
 import os
 from os.path import expanduser
+import argparse 
+
 home = expanduser("~")
-os.system("sudo ip link set dev ens3f0 xdp off")
-os.system("sudo ip link set dev ens3f1 xdp off")
+parser = argparse.ArgumentParser(description='Information about Data')
+parser.add_argument('-b', dest="benchmark", type=str, help=f"Benchmark {str(programs.keys())}", required=True)
+args = parser.parse_args()
+
+# read interfaces
+f = open("device.config", "r")
+device = f.read()
+device = node0.strip('\n')
+f.close()
+i = open(f"{device}.config", "r")
+interfaces = f.read().split("\n")
+print(interfaces)
+for i in interfaces:
+    os.system("sudo pkill -f \"{i}\"")
+    os.system("sudo ip link set dev {i} xdp off")
 os.chdir(f"{home}/throughput-experiments")
-os.system("rm xdp_fwd_kern.o")
+os.system(f"rm {args.benchmark}.o")

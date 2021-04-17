@@ -35,7 +35,6 @@ else:
 if args.benchmark == "xdp1":
     os.system(f"sudo ./xdp1 -N {interfaces[0]}")
 elif args.benchmark == "xdp2":
-    print("hello")
     os.system(f"sudo ./xdp2 -N {interfaces[0]}")
 elif args.benchmark == "xdp_pktcntr":
     os.system(f"sudo ip link set dev {interfaces[0]} xdp obj xdp_pktcntr.o sec xdp-pktcntr")
