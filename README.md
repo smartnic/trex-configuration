@@ -60,6 +60,7 @@ Detach xdp_fwd = `sudo ./xdp_fwd -d ens3f0 ens3f1`
 Note: To open latency statistics in the traffic generator console press ESC then L .
 
 ## Device Under Test Configurations
+_This is in setup_dut.sh_
 
 | Command | Description |
 | --- | --- |
