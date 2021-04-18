@@ -3,7 +3,7 @@ if [[ ("$#" -ne 2 && "$#" -ne 1) ]]; then
     exit 
 fi
 read -p "Enter Device type (d6515 or xl170):" device
-echo device > $HOME/trex-configuration/scripts/device.config
+echo $device > $HOME/trex-configuration/scripts/device.config
 cd ~
 sudo apt-get update
 sudo apt-get install linux-tools-common # for bpftool

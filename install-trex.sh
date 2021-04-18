@@ -1,7 +1,7 @@
 echo "Getting Device Under Test"
 read -p "Enter DUT as (username@machine):" input
 read -p "Enter Device type (d6515 or xl170):" device
-echo input > $HOME/v2.87/node0.config
+echo $input > $HOME/v2.87/node0.config
 cd ~
 wget --no-check-certificate --no-cache https://trex-tgn.cisco.com/trex/release/v2.87.tar.gz
 tar -xzvf v2.87.tar.gz
