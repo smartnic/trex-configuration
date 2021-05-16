@@ -5,11 +5,11 @@ import argparse
 home = expanduser("~")
 
 # read interfaces
-f = open("device.config", "r")
+f = open(f"{home}/trex-configuration/scripts/device.config", "r")
 device = f.read()
 device = device.strip('\n')
 f.close()
-i = open(f"{device}.config", "r")
+i = open(f"{home}/trex-configuration/scripts/{device}.config", "r")
 interfaces = i.read().split("\n")
 for i in interfaces:
     os.system(f"sudo pkill -f \"{i}\"")

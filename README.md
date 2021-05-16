@@ -12,6 +12,7 @@ On node1:
 7) Install T-Rex `./install-trex.sh`. Enter the DUT machine.
 8) Add outputted key to cloudlab.
 9) Add `export PYTHONPATH=$HOME/v2.87/automation/trex_control_plane/interactive` to profile 
+10) Wait 5 minutes and test ssh into node0 (adds it to list of known hosts)
 
 
 On node0:
@@ -20,8 +21,6 @@ On node0:
 3) `./setup_dut.sh`
 4) `cd ~`
 5) `git clone https://github.com/smartnic/throughput-experiments.git`
-6) cd throughput-experiments
-7) Edit load_and_run.sh depending on which program you want to run 
 
 ## Scripts
 

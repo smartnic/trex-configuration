@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Taken from xdp_paper repository
 function root_check_run_with_sudo() {
     # Trick so, program can be run as normal user, will just use "sudo"
     #  call as root_check_run_as_sudo "$@"
@@ -22,7 +22,21 @@ ethtool -A $1 rx off tx off
 # and make sure irqbalance don't reorder these
 pkill irqbalance
 
+echo " --- Align IRQs --- "
+echo "Note: This is supposed to error if it is a MLNX NIC"
+# I've named my NICs ixgbe1 + ixgbe2
+for F in /proc/irq/*/ixgbe*-TxRx-*/../smp_affinity_list; do
+   # Extract irqname e.g. "ixgbe2-TxRx-2"
+   irqname=$(basename $(dirname $(dirname $F))) ;
+   # Substring pattern removal
+   hwq_nr=${irqname#*-*-}
+   echo $hwq_nr > $F
+   #grep . -H $F;
+done
+grep -H . /proc/irq/*/ixgbe*/../smp_affinity_list
+
 echo " --- Align IRQs : mlx5 ---"
+echo "Note: This is supposed to error if it is an Intel NIC"
 for F in /proc/irq/*/mlx5_comp*/../smp_affinity; do
 	dir=$(dirname $F) ;
 	cat $dir/affinity_hint > $F
