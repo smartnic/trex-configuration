@@ -3,7 +3,7 @@ from os.path import expanduser
 import sys
 import argparse 
 
-interfaces = ["ens1f1"]
+interfaces = ["ens3f1"]
 programs = {
     "xdp1": ("xdp1_kern", "completed-programs/kernel_samples_xdp1_kern_xdp1_runtime_debug"),
     "xdp2": ("xdp2_kern", "completed-programs/kernel_samples_xdp2_kern_xdp1_runtime_debug"),
@@ -20,6 +20,14 @@ parser.add_argument('-v', dest="version", type=str, help='Name of version (e.g O
 args = parser.parse_args()
 
 home = expanduser("~")
+# read interfaces
+f = open(f"{home}/trex-configuration/scripts/device.config", "r")
+device = f.read()
+device = device.strip('\n')
+f.close()
+i = open(f"{home}/trex-configuration/scripts/{device}.config", "r")
+interfaces = i.read().split("\n")
+
 os.chdir(f"{home}/throughput-experiments")
 for x in interfaces:
     os.system(f"sudo ip link set dev {x} xdp off")

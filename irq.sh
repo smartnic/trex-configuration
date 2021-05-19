@@ -22,7 +22,7 @@ ethtool -A $1 rx off tx off
 # and make sure irqbalance don't reorder these
 pkill irqbalance
 
-echo " --- Align IRQs --- "
+echo " --- Align IRQs: intel --- "
 echo "Note: This is supposed to error if it is a MLNX NIC"
 # I've named my NICs ixgbe1 + ixgbe2
 for F in /proc/irq/*/ixgbe*-TxRx-*/../smp_affinity_list; do

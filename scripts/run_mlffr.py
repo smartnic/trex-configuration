@@ -38,7 +38,7 @@ for x in range (args.number):
         os.system(f"ssh -p 22 {node0} \"sh -c 'python3 -u $HOME/trex-configuration/scripts/load_xdp.py -b {args.benchmark} -v {v} 1>log.txt 2>err.txt &'\"")
         time.sleep(60)
         print("MLFFR...")
-        os.system(f"python3 -u mlffr.py -d {args.directory} -v {v} -r {x} -mS 1 -mE 15 -i 1 -rx 0")
+        os.system(f"python3 -u mlffr.py -d {args.directory} -v {v} -r {x} -mS 1 -mE 15 -i 1 -rx 1")
         print("Unloading xdp")
         os.system(f"ssh -p 22 {node0} 'python3 $HOME/trex-configuration/scripts/unload_xdp.py; exit'")
         time.sleep(60)
