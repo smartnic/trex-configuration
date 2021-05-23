@@ -5,10 +5,12 @@ import numpy as np
 import os 
 import pandas as pd
 import sys
+from os.path import expanduser
+home = expanduser("~")
 
 def write_averages(name, data, args, label):
      # Write Averages to file
-    myfile = f"{args.directory}/MLFFR_{args.version}_{label}.txt"
+    myfile = f"{home}/{args.directory}/MLFFR_{args.version}_{label}.txt"
     df = pd.DataFrame(data)
     df = df.rename(columns={name: f"{args.run}"})
     if (os.path.exists(myfile)):
@@ -107,7 +109,7 @@ if __name__ == "__main__":
         time.sleep(10)
 
     # Write Full Data to file 
-    fullData.to_csv(f"{args.directory}/MLFFR_{args.version}_{args.run}_full.txt",index=False)
+    fullData.to_csv(f"{home}/{args.directory}/MLFFR_{args.version}_{args.run}_full.txt",index=False)
 
     # Write Averages to file
     write_averages("Diff", diff, args, "t")

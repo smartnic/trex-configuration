@@ -16,7 +16,8 @@ parser.add_argument('-r', dest="run", type=str, help='Run Number', required=True
 parser.add_argument('-d', dest="directory", type=str, help='Directory', required=True)
 args = parser.parse_args()
 
-home = expanduser("~")
+HOME = expanduser("~")
+home = "/usr/local"
 # read interfaces
 f = open(f"{home}/trex-configuration/scripts/device.config", "r")
 device = f.read()
@@ -31,17 +32,16 @@ for x in interfaces:
 
 number = list(args.version)[1]
 if "k" in args.version.lower():
-    os.system(f"cp {programs[args.benchmark][1]}/top-progs/{programs[args.benchmark][0]}{number}.o {programs[args.benchmark][0]}.o")
+    os.system(f"sudo cp {programs[args.benchmark][1]}/top-progs/{programs[args.benchmark][0]}{number}.o {programs[args.benchmark][0]}.o")
 else:
-    os.system(f"cp {args.version.upper()}/{programs[args.benchmark][0]}.o .")
+    os.system(f"sudo cp {args.version.upper()}/{programs[args.benchmark][0]}.o .")
 
 # create directory
-if not os.path.isdir(f"{home}/{args.directory}"):
-    print("Hello")
-    os.mkdir(f"{home}/{args.directory}")
+if not os.path.isdir(f"{HOME}/{args.directory}"):
+    os.mkdir(f"{HOME}/{args.directory}")
 
 # load program
 if args.benchmark == "xdp1":
-    os.system(f"sh -c 'sudo ./xdp1 -N {interfaces[0]}' 1>{home}/{args.directory}/{args.version}_{args.run}_{args.rate}.txt 2>err.txt &")
+    os.system(f"sh -c 'sudo ./xdp1 -N {interfaces[0]}' 1>{HOME}/{args.directory}/{args.version}_{args.run}_{args.rate}.txt 2>{HOME}/err.txt &")
 elif args.benchmark == "xdp_map_access":
-    os.system(f"sh -c 'sudo ./xdp_map_access -N {interfaces[0]}' 1>{home}/{args.directory}/{args.version}_{args.run}_{args.rate}.txt 2>err.txt &")
+    os.system(f"sh -c 'sudo ./xdp_map_access -N {interfaces[0]}' 1>{HOME}/{args.directory}/{args.version}_{args.run}_{args.rate}.txt 2>{HOME}/err.txt &")

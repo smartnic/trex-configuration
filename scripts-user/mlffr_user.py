@@ -5,11 +5,10 @@ import numpy as np
 import os 
 import pandas as pd
 import sys
-
+from os.path import expanduser
 
 if __name__ == "__main__":
-    sys.path.append(f"{os.getcwd()}/automation/trex_control_plane/interactive")
-    start = time.time()
+    #start = time.time()
     parser = argparse.ArgumentParser(description='Information about Data')
     parser.add_argument('-d', dest="directory", type=str, help='Directory', required=True)
     parser.add_argument('-v', dest="version", type=str, help='Name of version (e.g o1, o2, s0, s1, s2, s3, s4)', required=True)
@@ -38,7 +37,7 @@ if __name__ == "__main__":
             break
         # load xdp program 
         print("Loading...")
-        os.system(f"ssh -p 22 {node0} \"sh -c 'python3 -u $HOME/trex-configuration/scripts/load_xdp_user.py -b {args.benchmark} -v {args.version} -m {round(rate, 2)} -r {args.run} -d {args.directory}&'\"")
+        os.system(f"ssh -p 22 {node0} \"sh -c 'python3 -u /usr/local/trex-configuration/scripts/load_xdp_user.py -b {args.benchmark} -v {args.version} -m {round(rate, 2)} -r {args.run} -d {args.directory}&'\"")
 
         try:
             c.connect() # connect to server
@@ -56,7 +55,7 @@ if __name__ == "__main__":
             #c.wait_on_traffic(ports = 0)
             print(f"Completed {rate}")
             print("Unloading...")
-            os.system(f"ssh -p 22 {node0} 'python3 -u $HOME/trex-configuration/scripts/unload_xdp.py; exit'")
+            os.system(f"ssh -p 22 {node0} 'python3 -u /usr/local/trex-configuration/scripts/unload_xdp.py; exit'")
         except STLError as e:
             print(e)
 
@@ -66,6 +65,6 @@ if __name__ == "__main__":
         
         time.sleep(5)
 
-    end = time.time()
-    print(f"Total Time: {end-start}")
+    # end = time.time()
+    # print(f"Total Time: {end-start}")
     print("DONE")

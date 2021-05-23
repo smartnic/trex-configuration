@@ -5,11 +5,7 @@ import argparse
 
 interfaces = ["ens3f1"]
 programs = {
-    "xdp1": ("xdp1_kern", "completed-programs/kernel_samples_xdp1_kern_xdp1_runtime_debug"),
     "xdp2": ("xdp2_kern", "completed-programs/kernel_samples_xdp2_kern_xdp1_runtime_debug"),
-    "xdp_pktcntr": ("xdp_pktcntr", "completed-programs/katran_xdp_pktcntr_runtime_debug"),
-    "xdp_redirect": ("xdp_redirect_kern", "completed-programs/kernel_samples_xdp_redirect_runtime_debug"),
-    "xdp_map_access": ("xdp_map_access_kern", "completed-programs/simple_fw_xdp_map_access_runtime_debug"),
     "xdp_fw": ("xdp_fw_kern", "completed-programs/simple_fw_xdp_fw_runtime_debug"),
     "xdp_router_ipv4": ("xdp_router_ipv4_kern", "completed-programs/kernel_samples_xdp_router_ipv4_runtime_debug"),
     "xdp_fwd": ("xdp_fwd_kern", "completed-programs/kernel_samples_xdp_fwd_kern_xdp_fwd_runtime_debug")
@@ -20,6 +16,7 @@ parser.add_argument('-v', dest="version", type=str, help='Name of version (e.g O
 args = parser.parse_args()
 
 home = expanduser("~")
+home = "/usr/local"
 # read interfaces
 f = open(f"{home}/trex-configuration/scripts/device.config", "r")
 device = f.read()
@@ -34,9 +31,9 @@ for x in interfaces:
 
 number = list(args.version)[1]
 if "k" in args.version.lower():
-    os.system(f"cp {programs[args.benchmark][1]}/top-progs/{programs[args.benchmark][0]}{number}.o {programs[args.benchmark][0]}.o")
+    os.system(f"sudo cp {programs[args.benchmark][1]}/top-progs/{programs[args.benchmark][0]}{number}.o {programs[args.benchmark][0]}.o")
 else:
-    os.system(f"cp {args.version.upper()}/{programs[args.benchmark][0]}.o .")
+    os.system(f"sudo cp {args.version.upper()}/{programs[args.benchmark][0]}.o .")
 
 # load program 
 
