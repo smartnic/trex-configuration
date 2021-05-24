@@ -4,7 +4,37 @@ This repository was used to evaluate K2. The following README demonstrates how t
 
 ## Setup 
 
-[Setup Instructions](Setup%20Instructions.pdf)
+Estimate Time: 20 minutes
+
+### Step 1: Create Experiment
+#### Step 1.1: Start Experiment 
+![](instruction-images/start.png =20px)
+#### Step 1.2: Change Profile
+![](instruction-images/change-profile.png)
+#### Step 1.3: Select Profile
+![](instruction-images/save-profile.png)
+#### Step 1.4: Name Experiment (optional)
+![](instruction-images/name-expr.png)
+#### Step 1.5: Schedule Experiment
+![](instruction-images/schedule.png)
+
+### Step 2: Setup Nodes
+#### Step 2.1: Update Node 1 Configurations
+1) SSH into Node1. 
+2) Add `export PYTHONPATH=/usr/local/v2.87/automation/trex_control_plane/interactive` to ~/.bash_profile
+3) `cd /usr/local/trex-configuration/`
+4) Run ./update-scripts.sh. When prompted, enter the node0 for your experiment and type xl170.
+5) Exit session and login again. 
+ 
+#### Step 2.2: Create SSH Key
+1) Generate ssh key. `ssh-keygen`  (press enter for all the prompts)
+2) Add SSH key into Cloudlab
+![](instruction-images/name-expr.png)
+4) Wait 5-10 minutes. Cloud lab takes a bit of time to update your ssh key. Then, test ssh into the node0 from node 1. This step is necessary, do not skip!
+
+#### Step 2.3: Update Node0 Configurations
+1) SSH into Node0
+2) `./setup_dut.sh ens1f1`. Type in Y when it prompts and enter xl170 when it prompts for a device.
 
 ## Exercises
 *Note: All DATA and logs, graphs are saved in your home directory*
