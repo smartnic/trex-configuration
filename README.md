@@ -4,9 +4,10 @@ This repository was used to evaluate K2. The following README demonstrates how t
 
 ## Setup 
 Please follow the instructions here:
-[insert power point here]
+[Setup Instructions](Setup\ Instructions.pdf)
 
 ## Exercises
+*Note: All DATA and logs, graphs are in your home directory*
 
 ### Exercise 1: Run one version of a benchmark that DOES NOT drop packets. 
 Estimated Run Time: 30 minutes
@@ -40,5 +41,3 @@ Estimated Run Time: 6 hours
 3) Check progress of logs `tail -f $HOME/map_all.out`
 4) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs. 
 5) Generate throughput graphs: `python3 generate_user_graphs.py -d ~/xdp_map_all -b xdp_map_access -r 3 -average`
-
-## File Structure
