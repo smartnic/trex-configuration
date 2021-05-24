@@ -3,11 +3,11 @@
 This repository was used to evaluate K2. The following README demonstrates how to setup the evaulation setup in cloudlab. 
 
 ## Setup 
-Please follow the instructions here:
-[Setup Instructions](Setup\ Instructions.pdf)
+
+[Setup Instructions](Setup%20Instructions.pdf)
 
 ## Exercises
-*Note: All DATA and logs, graphs are in your home directory*
+*Note: All DATA and logs, graphs are saved in your home directory*
 
 ### Exercise 1: Run one version of a benchmark that DOES NOT drop packets. 
 Estimated Run Time: 30 minutes
