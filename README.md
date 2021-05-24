@@ -13,7 +13,7 @@ Estimate Time: 20 minutes
 #### Step 1.2: Change Profile
 <img src="instruction-images/change-profile.png" width="700px" />
 
-#### Step 1.3: Select Profile
+#### Step 1.3: Select k2-performance-xl170 Profile
 <img src="instruction-images/save-profile.png" width="700px" />
 
 #### Step 1.4: Name Experiment (optional)
