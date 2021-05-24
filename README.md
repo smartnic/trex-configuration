@@ -1,69 +1,44 @@
-# trex-configuration
+# Performance Experiments
 
-## Steps to configure trex K2 testing setup 
+This repository was used to evaluate K2. The following README demonstrates how to setup the evaulation setup in cloudlab. 
 
-On node1:
-1) Clone repository `git clone https://github.com/smartnic/trex-configuration.git`
-2) cd trex-configuration
-3) Run dependencies `./install-dependencies.sh`
-4) `sudo dracut -f`
-5) `sudo reboot`
-6) cd trex-configuration
-7) Install T-Rex `./install-trex.sh`. Enter the DUT machine.
-8) Add outputted key to cloudlab.
-9) Add `export PYTHONPATH=$HOME/v2.87/automation/trex_control_plane/interactive` to profile 
-10) Wait 5 minutes and test ssh into the node0 in your experiment (adds it to list of known hosts).
+## Setup 
+Please follow the instructions here:
+[insert power point here]
 
+## Exercises
 
-On node0:
-1) Clone repository `git clone https://github.com/smartnic/trex-configuration.git`
-2) cd trex-configuration
-3) `./setup_dut.sh <recieving interface> <sending interface>`
-4) `cd ~`
-5) `git clone https://github.com/smartnic/throughput-experiments.git`
+### Exercise 1: Run one version of a benchmark that DOES NOT drop packets. 
+Estimated Run Time: 30 minutes
+1) Change to directory: `cd /usr/local/v2.87`
+2) Start run: `nohup python3 -u run_mlffr.py -b xdp_fwd -v o1 -d xdp_fwd/ -n 1 -c 6 &`
+3) Check progress of logs `tail -f $HOME/nohup.out`
+4) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs. 
+5) Generate throughput: `python3 rx_plot.py -d ~/xdp_fwd -v O1 -b xdp_fwd -r 0`
+6) Generate latency: `python3 latency.py -d ~/xdp_fwd -type avg -v O1 -b xdp_fwd`
 
-## Scripts
+### Exercise 2: Run one version of a benchmark that DOES drop packets. 
+Estimated Run Time: 30 minutes
+1) Change to directory: `cd /usr/local/v2.87`
+1) Start run: `nohup python3 -u run_mlffr_user.py -b xdp_map_access -v o1 -d xdp_map -n 1 -c 6 > $HOME/map.txt &`
+2) Check progress of logs `tail -f $HOME/map.out`
+3) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs. 
+4) Generate throughput: `python3 generate_user_graphs.py -d ~/xdp_map -v O1 -b xdp_map_access -r 0`
 
-### Run all versions  
-`python3 run_mlffr_no_stop.py -d $directory`
-*Note: Takes several hours to run*
+### Exercise 3: Run all versions of a benchmark (that DOES NOT drop packets) three times each. 
+Estimated Run time: 6 hours 
+1) Change to directory: `cd /usr/local/v2.87`
+2) Start run: `nohup python3 -u run_mlffr.py -b xdp_fwd -d xdp_fwd_all -n 3 -c 6 > $HOME/xdp_fwd_log.txt &`
+3) Check progress of logs `tail -f $HOME/xdp_fwd_log.out`
+4) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs. 
+5) Generate throughput, drop rate, and latency graphs: `python3 generate_graphs.py -d xdp_fwd_all -b xdp_fwd -r 3`
 
-### Run a specific version 
-`python3 run_mlffr_no_stop.py -d $directory -v o1`  
-*Note: Takes about 3 minutes per run and ~20 for a set of 5 runs*
+### Exercise 4: Run all versions of a benchmark (that DOES drop packets) three times each. 
+Estimated Run Time: 6 hours 
+1) Change to directory: `cd /usr/local/v2.87`
+2) Start run: `nohup python3 -u run_mlffr_user.py -b xdp_map_access -d xdp_map_all -n 3 -c 6 > $HOME/map_all.txt &`
+3) Check progress of logs `tail -f $HOME/map_all.out`
+4) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs. 
+5) Generate throughput graphs: `python3 generate_user_graphs.py -d ~/xdp_map_all -b xdp_map_access -r 3 -average`
 
-### Run with manual loading
-1) Start Trex on Node1:  `cd v2.87; sudo ./t-rex-64 -i -c 14`
-2) Load XDP program: `./load_and_run.sh`
-3) Start MLFFR: `cd v2.87; python3 mlffr.py -d $directory -v $version`
-
-### Run through t-rex console
-**Node 1 (Traffic Generator):**  
-`cd MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.8-x86_64/v2.87/`   
-Start the t-rex on node 1: `sudo ./t-rex-64 -i -c 14` 
-
-**Node 0 (Device Under Test):**
-Load Sample xdp Program. For example,  
-Load xdp_fwd = `sudo ./samples/bpf/xdp_fwd ens3f0 ens3f1`   
-Load xdp_rxq =    
-`sudo ./samples/bpf/xdp_rxq_info --dev ens3f0 --action XDP_DROP`    
-`sudo ./samples/bpf/xdp_rxq_info --dev ens3f0 --action XDP_TX --swapmac`    
-
-**Node 1 (Traffic Generator):**   
-`cd MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.8-x86_64/v2.87/`  
-`./trex-console`  
-`tui`  
-`start -f stl/udp_for_benchmarks.py -t packet_len=64,stream_count=2 --port 0 -m 148mpps # you might have to do stl/`
-
-Note: To open latency statistics in the traffic generator console press ESC then L .
-
-## Device Under Test Configurations
-_This is in setup_dut.sh_
-
-| Command | Description |
-| --- | --- |
-| `sudo ./rss.sh <receive interface>` | Linux Receive Side Scaling | 
-| `sudo ./irq.sh <recieve interface>` | IRQ Affinities for NIC receive queues |
-| `sudo ethtool --set-priv-flags <recieve interface> rx_striding_rq off` | PCIe descriptor compression |
-| `sudo ifconfig <recieve interface> mtu 3498; sudo ifconfig <send interface> mtu 3498; ` | Maximum MTU for Mellanox Driver to support BPF |
-| `sudo ethtool -G <recieve interface> rx 256`| RX descriptor ring size for the NIC |
+## File Structure
