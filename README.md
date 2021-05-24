@@ -8,15 +8,20 @@ Estimate Time: 20 minutes
 
 ### Step 1: Create Experiment
 #### Step 1.1: Start Experiment 
-![](instruction-images/start.png =20px)
+<img src="instruction-images/start.png" width="700px" />
+
 #### Step 1.2: Change Profile
-![](instruction-images/change-profile.png)
+<img src="instruction-images/change-profile.png" width="700px" />
+
 #### Step 1.3: Select Profile
-![](instruction-images/save-profile.png)
+<img src="instruction-images/save-profile.png" width="700px" />
+
 #### Step 1.4: Name Experiment (optional)
-![](instruction-images/name-expr.png)
+<img src="instruction-images/name-expr.png" width="700px" />
+
 #### Step 1.5: Schedule Experiment
-![](instruction-images/schedule.png)
+*Default/Intial time for an experiment is 16 hours. You can extend it later when the experiments boots up.*
+<img src="instruction-images/schedule.png" width="700px" />
 
 ### Step 2: Setup Nodes
 #### Step 2.1: Update Node 1 Configurations
@@ -29,7 +34,9 @@ Estimate Time: 20 minutes
 #### Step 2.2: Create SSH Key
 1) Generate ssh key. `ssh-keygen`  (press enter for all the prompts)
 2) Add SSH key into Cloudlab
-![](instruction-images/name-expr.png)
+
+ <img src="instruction-images/create-ssh.png" width="300px"> <img src="instruction-images/add-key.png" width="500px" >
+ 
 4) Wait 5-10 minutes. Cloud lab takes a bit of time to update your ssh key. Then, test ssh into the node0 from node 1. This step is necessary, do not skip!
 
 #### Step 2.3: Update Node0 Configurations
