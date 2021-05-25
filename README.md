@@ -86,7 +86,7 @@ scp -i my.key my.key reviewer@hp060.utah.cloudlab.us:~/.ssh/id_ed25519
 ssh reviewer@hp073.utah.cloudlab.us
 ```
 
-ensuring that you replace hp073.utah.cloudlab.us by the name of the node-0 machine from the CloudLab console. You should be able to connect to node-0.
+where you will replace hp073.utah.cloudlab.us by the name of the node-0 machine from the CloudLab console. You should be able to connect to node-0.
 
 #### Step 2.3: Update Node0 Configurations
 
