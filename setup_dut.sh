@@ -11,7 +11,10 @@ sudo apt-get install linux-tools-common # for bpftool
 sudo apt-get install sysstat # for mpstat
 sudo apt-get install htop # generally useful
 sudo apt-get install linux-tools-5.4.0-51-generic linux-cloud-tools-5.4.0-51-generic linux-tools-generic linux-cloud-tools-generic
+sudo apt install python3-pip
 sudo pip3 install matplotlib
+sudo pip3 install pandas
+sudo pip3 install numpy
 echo "Setting up configurations"
 for var in "$@"
 do

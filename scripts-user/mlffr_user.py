@@ -37,7 +37,7 @@ if __name__ == "__main__":
             break
         # load xdp program 
         print("Loading...")
-        os.system(f"ssh -p 22 {node0} \"sh -c 'python3 -u /usr/local/trex-configuration/scripts/load_xdp_user.py -b {args.benchmark} -v {args.version} -m {round(rate, 2)} -r {args.run} -d {args.directory} &'\"")
+        os.system(f"ssh -p 22 {node0} \"sh -c 'python3 -u /usr/local/trex-configuration/scripts/load_xdp_user.py -b {args.benchmark} -v {args.version.lower()} -m {round(rate)} -r {args.run} -d {args.directory} &'\"")
 
         try:
             c.connect() # connect to server
