@@ -33,17 +33,38 @@ The default/initial duration for which an experiment may run (i.e., the time tha
 
 Sometimes, starting an experiment can fail when CloudLab has insufficient resources available. If your experiment fails due to insufficient resources, you can check for future resource availability at https://www.cloudlab.us/resinfo.php -- look for future availability of machine instances of type "xl170" in the Utah cluster. You need at least 2 available machines for our experiment. You can also make reservations for machines at a future time by following instructions from http://docs.cloudlab.us/reservations.html. Please contact us if you have any difficulty.
 
-If your experiment is successfully scheduled, it might still keep you waiting with the message `Please wait while we get your experiments ready`. This can happen sometimes since we use a custom disk image (to help you avoid setting up dependencies).
+If your experiment is successfully scheduled, it might still keep you waiting with the message `Please wait while we get your experiments ready`. This can happen sometimes since we use a custom disk image.
 
 Contact us or the CloudLab mailing list (https://groups.google.com/g/cloudlab-users) if you have any difficulties.
 
-### Step 2: Setup Nodes
+### Step 2: Setup The Nodes
 #### Step 2.1: Update Node 1 Configurations
-1) SSH into Node1. 
-2) Add `export PYTHONPATH=/usr/local/v2.87/automation/trex_control_plane/interactive` to ~/.bash_profile
-3) `cd /usr/local/trex-configuration/`
-4) Run ./update-scripts.sh. When prompted, enter the node0 for your experiment and type xl170.
-5) Exit session and login again. 
+1) SSH into node-1.  You can determine the name of the node-1 and node-0 machines from the CloudLab console (go to "list view" once the experiment is ready)
+ 
+ <img src="instruction-images/cloudlab-listview.png" width="700px">
+ 
+ You must use the private key and key password provided as part of our hotCRP submission to login into the machine labeled node-1 (`hp060.utah.cloudlab.us` in our example above). Suppose you've named the file containing the private key (from hotCRP) `my.key`.  You will then type
+ 
+ ```
+ ssh -p 22 -i my.key reviewer@hp060.utah.cloudlab.us
+ ```
+
+You will need to type in the key password provided on hotCRP.
+ 
+3) Once logged into node-1, use your favorite text editor to add the line 
+   ```export PYTHONPATH=/usr/local/v2.87/automation/trex_control_plane/interactive``` 
+   to ~/.bash_profile.
+4) `cd /usr/local/trex-configuration/`
+5) Run ./update-scripts.sh. When prompted, enter the following details for your experiment. The user@DUT (device under test) string is `reviewer@<insert node-0 name you found above>` and the device type should be `xl170`. A complete run might look like the following:
+
+```
+reviewer@node-1 trex-configuration]$ ./update-scripts.sh 
+Setting up some information
+Enter DUT as (username@machine):reviewer@hp073.utah.cloudlab.us
+Enter Device type (d6515 or xl170):xl170
+```
+
+6) Exit the session and login again. 
  
 #### Step 2.2: Create SSH Key
 1) Generate ssh key. `ssh-keygen`  (press enter for all the prompts)
