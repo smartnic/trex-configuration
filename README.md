@@ -16,7 +16,7 @@ Visit https://cloudlab.us/ and click the "Log in" button. You can use the review
 #### Step 1.2: Change Profile
 <img src="instruction-images/change-profile.png" width="700px" />
 
-#### Step 1.3: Select k2-performance-xl170 Profile
+#### Step 1.3: Select xl170-centos7-ubuntu20 Profile
 <img src="instruction-images/save-profile.png" width="700px" />
 
 #### Step 1.4: Name Experiment (optional)
@@ -46,10 +46,10 @@ The experiment consists of two nodes, labeled node-0 and node-1. Node-0 serves a
  
  <img src="instruction-images/cloudlab-listview.png" width="700px">
  
- You must use the private key provided as part of our hotCRP submission to login into the machine labeled node-1 (`hp060.utah.cloudlab.us` in the example above). Suppose you've named the file containing the private key (from hotCRP) `my.key`.  Type
+ You must use the private key provided as part of our hotCRP submission to login into the machine labeled node-1 (`hp125.utah.cloudlab.us` in the example above). Suppose you've named the file containing the private key (from hotCRP) `my.key`.  Type
  
  ```
- ssh -p 22 -i my.key reviewer@hp060.utah.cloudlab.us
+ ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us
  ```
  
 3) Once logged into node-1, use your favorite text editor to add the line 
@@ -65,7 +65,7 @@ to ~/.bash_profile.
 ```
 reviewer@node-1 trex-configuration]$ ./update-scripts.sh 
 Setting up some information
-Enter DUT as (username@machine):reviewer@hp073.utah.cloudlab.us
+Enter DUT as (username@machine):reviewer@hp124.utah.cloudlab.us
 Enter Device type (d6515 or xl170):xl170
 ```
 
@@ -77,16 +77,16 @@ You will upload the SSH private key provided to you on hotCRP into node-1, so th
 
 1) *On your own machine*, run the command
 ```
-scp -i my.key my.key reviewer@hp060.utah.cloudlab.us:~/.ssh/id_ed25519
+scp -i my.key my.key reviewer@hp125.utah.cloudlab.us:~/.ssh/id_ed25519
 ```
 
 2) *On node-1*, test that you can ssh into node-0. _Do not skip this check!_ On the node-1 machine you're currently logged into, type 
 
 ```
-ssh reviewer@hp073.utah.cloudlab.us
+ssh -p 22 reviewer@hp124.utah.cloudlab.us
 ```
 
-where you will replace hp073.utah.cloudlab.us by the name of the node-0 machine from the CloudLab console. You should be able to connect to node-0.
+where you will replace hp124.utah.cloudlab.us by the name of the node-0 machine from the CloudLab console. You should be able to connect to node-0.
 
 ## Exercises
 *Note: All DATA and logs, graphs are saved in your home directory*
