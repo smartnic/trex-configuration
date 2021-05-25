@@ -101,12 +101,12 @@ Estimated Run Time: 30 minutes
 6) Generate throughput: `python3 rx_plot.py -d ~/xdp_fwd -v o1 -b xdp_fwd -r 0`
 The graph will be located in the `$HOME/xdp_fwd/rx` directory and is called `0.png`.
 
- <img src="instruction-images/O1_avgL.png" width="500px">
-
+ <img src="instruction-images/0.png" width="500px">
+ 
 6) Generate latency: `python3 latency.py -d ~/xdp_fwd -type avg -v o1 -b xdp_fwd`
 The graph will be located in `$HOME/xdp_fwd/` directory and is called `o1_avgL.png`.
 
- <img src="instruction-images/0.png" width="500px">
+  <img src="instruction-images/O1_avgL.png" width="500px">
 
 
 ### Exercise 2: Run one version of a benchmark that DOES drop packets. 
