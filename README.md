@@ -7,6 +7,9 @@ This repository was used to evaluate K2. The following README demonstrates how t
 Estimate Time: 20 minutes
 
 ### Step 1: Create Experiment
+
+Visit [link]https://cloudlab.us/[/link] and click the "Log in" button. You can use the reviewer account details (CloudLab account username and password provided in our SIGCOMM21 artifact hotCRP submission) to log into the CloudLab console.
+
 #### Step 1.1: Start Experiment 
 <img src="instruction-images/start.png" width="700px" />
 
@@ -19,9 +22,18 @@ Estimate Time: 20 minutes
 #### Step 1.4: Name Experiment (optional)
 <img src="instruction-images/name-expr.png" width="700px" />
 
-#### Step 1.5: Schedule Experiment
-*Default/Intial time for an experiment is 16 hours. You can extend it later when the experiments boots up.*
+#### Step 1.5: Start or Schedule Experiment
+You can choose to start the experiment right away (just click "Finish" in the screen below) or schedule it to start at some time in the future. 
+
+The default/initial duration for which an experiment may run (i.e., the time that the machines will be available to you) is 16 hours. You can extend an experiment later after the experiment boots up.
+
 <img src="instruction-images/schedule.png" width="700px" />
+
+##### Failures/slow cases. 
+
+Sometimes, starting an experiment can fail when CloudLab has insufficient resources available. If your experiment fails due to insufficient resources, you can check for future resource availability at [link]https://www.cloudlab.us/resinfo.php[/link] -- look for future availability of machine instances of type "xl170" in the Utah cluster. You need at least 2 available machines for our experiment. You can also make reservations for machines at a future time by following instructions from [link]http://docs.cloudlab.us/reservations.html[/link]. Please contact us if you have any difficulty.
+
+If your experiment is successfully scheduled, it might still keep you waiting with the message `Please wait while we get your experiments ready`. This can happen sometimes since we use a custom disk image (to help you avoid setting up dependencies)
 
 ### Step 2: Setup Nodes
 #### Step 2.1: Update Node 1 Configurations
