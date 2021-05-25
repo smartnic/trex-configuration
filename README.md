@@ -114,7 +114,7 @@ Estimated Run Time: 30 minutes
 1) SSH into Node1 
 2) Change to directory: `cd /usr/local/v2.87`
 3) Start run: `nohup python3 -u run_mlffr_user.py -b xdp_map_access -v o1 -d xdp_map -n 1 -c 6 > $HOME/map.txt &`
-4) Check progress of logs `tail -f $HOME/map.out`
+4) Check progress of logs `tail -f $HOME/map.txt`
 5) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs. The logs are located in node0.
 6) SSH in node0. and `cd /usr/local/trex-configuration/visualize-data-scripts/` 
 7) Generate throughput: `python3 generate_user_graphs.py -d ~/xdp_map -v O1 -b xdp_map_access -r 0`
@@ -126,7 +126,7 @@ Estimated Run time: 6 hours
 1) SSH into Node1
 2) Change to directory: `cd /usr/local/v2.87`
 3) Start run: `nohup python3 -u run_mlffr.py -b xdp_fwd -d xdp_fwd_all -n 3 -c 6 > $HOME/xdp_fwd_log.txt &`
-4) Check progress of logs `tail -f $HOME/xdp_fwd_log.out`
+4) Check progress of logs `tail -f $HOME/xdp_fwd_log.txt`
 5) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs.
 `cd /usr/local/trex-configuration/visualize-data-scripts/` 
 5) Generate throughput, drop rate, and latency graphs: `python3 generate_graphs.py -d xdp_fwd_all -b xdp_fwd -r 3`
@@ -136,7 +136,7 @@ Estimated Run Time: 6 hours
 1) SSH into Node1
 2) Change to directory: `cd /usr/local/v2.87`
 3) Start run: `nohup python3 -u run_mlffr_user.py -b xdp_map_access -d xdp_map_all -n 3 -c 6 > $HOME/map_all.txt &`
-4) Check progress of logs `tail -f $HOME/map_all.out`
+4) Check progress of logs `tail -f $HOME/map_all.txt`
 5) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs.
 `cd /usr/local/trex-configuration/visualize-data-scripts/` 
 5) Generate throughput graphs: `python3 generate_user_graphs.py -d ~/xdp_map_all -b xdp_map_access -r 3 -average`
