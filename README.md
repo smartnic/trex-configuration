@@ -8,7 +8,7 @@ Estimate Time: 20 minutes
 
 ### Step 1: Create Experiment
 
-Visit [link]https://cloudlab.us/[/link] and click the "Log in" button. You can use the reviewer account details (CloudLab account username and password provided in our SIGCOMM21 artifact hotCRP submission) to log into the CloudLab console.
+Visit https://cloudlab.us/ and click the "Log in" button. You can use the reviewer account details (CloudLab account username and password provided in our SIGCOMM21 artifact hotCRP submission) to log into the CloudLab console.
 
 #### Step 1.1: Start Experiment 
 <img src="instruction-images/start.png" width="700px" />
@@ -29,11 +29,13 @@ The default/initial duration for which an experiment may run (i.e., the time tha
 
 <img src="instruction-images/schedule.png" width="700px" />
 
-##### Failures/slow cases. 
+##### You may encounter the following failures/slow cases: 
 
-Sometimes, starting an experiment can fail when CloudLab has insufficient resources available. If your experiment fails due to insufficient resources, you can check for future resource availability at [link]https://www.cloudlab.us/resinfo.php[/link] -- look for future availability of machine instances of type "xl170" in the Utah cluster. You need at least 2 available machines for our experiment. You can also make reservations for machines at a future time by following instructions from [link]http://docs.cloudlab.us/reservations.html[/link]. Please contact us if you have any difficulty.
+Sometimes, starting an experiment can fail when CloudLab has insufficient resources available. If your experiment fails due to insufficient resources, you can check for future resource availability at https://www.cloudlab.us/resinfo.php -- look for future availability of machine instances of type "xl170" in the Utah cluster. You need at least 2 available machines for our experiment. You can also make reservations for machines at a future time by following instructions from http://docs.cloudlab.us/reservations.html. Please contact us if you have any difficulty.
 
-If your experiment is successfully scheduled, it might still keep you waiting with the message `Please wait while we get your experiments ready`. This can happen sometimes since we use a custom disk image (to help you avoid setting up dependencies)
+If your experiment is successfully scheduled, it might still keep you waiting with the message `Please wait while we get your experiments ready`. This can happen sometimes since we use a custom disk image (to help you avoid setting up dependencies).
+
+Contact us or the CloudLab mailing list (https://groups.google.com/g/cloudlab-users) if you have any difficulties.
 
 ### Step 2: Setup Nodes
 #### Step 2.1: Update Node 1 Configurations
