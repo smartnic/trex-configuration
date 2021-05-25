@@ -88,16 +88,6 @@ ssh reviewer@hp073.utah.cloudlab.us
 
 where you will replace hp073.utah.cloudlab.us by the name of the node-0 machine from the CloudLab console. You should be able to connect to node-0.
 
-#### Step 2.3: Update Node0 Configurations
-
-You're currently on a terminal on node-0 (DUT). 
-
-1) *On node-0*, update the configurations of the DUT by running
-
-```./setup_dut.sh ens1f1```
-
-Type in Y when it prompts and enter xl170 when it prompts for a device.
-
 ## Exercises
 *Note: All DATA and logs, graphs are saved in your home directory*
 
