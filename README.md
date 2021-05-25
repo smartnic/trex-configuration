@@ -100,12 +100,12 @@ Estimated Run Time: 30 minutes
 5) Generate throughput: `python3 rx_plot.py -d ~/xdp_fwd -v o1 -b xdp_fwd -r 0`
 The graph will be located in the `$HOME/xdp_fwd/rx` directory and is called `0.png`.
 
- <img src="instruction-images/O1_avgL.png" width="700px">
+ <img src="instruction-images/O1_avgL.png" width="500px">
 
 6) Generate latency: `python3 latency.py -d ~/xdp_fwd -type avg -v o1 -b xdp_fwd`
 The graph will be located in `$HOME/xdp_fwd/` directory and is called `o1_avgL.png`.
 
- <img src="instruction-images/0.png" width="700px">
+ <img src="instruction-images/0.png" width="500px">
 
 
 ### Exercise 2: Run one version of a benchmark that DOES drop packets. 
@@ -113,9 +113,11 @@ Estimated Run Time: 30 minutes
 1) Change to directory: `cd /usr/local/v2.87`
 1) Start run: `nohup python3 -u run_mlffr_user.py -b xdp_map_access -v o1 -d xdp_map -n 1 -c 6 > $HOME/map.txt &`
 2) Check progress of logs `tail -f $HOME/map.out`
-3) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs.
-`cd /usr/local/trex-configuration/visualize-data-scripts/` 
-4) Generate throughput: `python3 generate_user_graphs.py -d ~/xdp_map -v o1 -b xdp_map_access -r 0`
+3) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs. The logs are located in node0.
+4) SSH in node0. and `cd /usr/local/trex-configuration/visualize-data-scripts/` 
+5) Generate throughput: `python3 generate_user_graphs.py -d ~/xdp_map -v O1 -b xdp_map_access -r 0`
+
+ <img src="instruction-images/exercise-2.png" width="500px">
 
 ### Exercise 3: Run all versions of a benchmark (that DOES NOT drop packets) three times each. 
 Estimated Run time: 6 hours 
