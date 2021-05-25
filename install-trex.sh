@@ -6,6 +6,7 @@ wget --no-check-certificate --no-cache https://trex-tgn.cisco.com/trex/release/v
 tar -xzvf v2.87.tar.gz
 sudo pip3 install numpy
 sudo pip3 install pandas
+sudo pip3 install matplotlib
 sudo cp  trex-configuration/trex_cfg_$device.yaml /etc/trex_cfg.yaml
 cd v2.*
 sudo ./dpdk_setup_ports.py -s
