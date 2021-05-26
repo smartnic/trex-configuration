@@ -184,12 +184,12 @@ Note: There is a typo in Table 7 in the submitted paper. K2 produced 3 unique pr
 
 Estimated runtime: 2 minutes 30 seconds
 
-1) SSH into Node-0: suppose currently you are on Node-1 machine
+SSH into Node-0: suppose currently you are on node-0 machine
 ```
 ssh -p 22 reviewer@hp124.utah.cloudlab.us
 ```
 where you will replace hp124.utah.cloudlab.us by the name of the node-0 machine from the CloudLab console.
-2) 
+
 ```
 cd /usr/local/trex-configuration/safety_chk
 sudo python3 safety_chk.py
