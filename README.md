@@ -111,9 +111,9 @@ The graph will be located in `$HOME/xdp_fwd/` directory and is called `o1_avgL.p
 
   <img src="instruction-images/O1_avgL.png" width="500px">
 
-7) Copy Graphs and View Graphs on your computer 
-`scp -i my.key reviewer@hp025.utah.cloudlab.us:/users/reviewer/xdp_fwd/rx/0.png .`
-`scp -i my.key reviewer@hp025.utah.cloudlab.us:/users/reviewer/xdp_fwd/o1_avgL.png .`
+7) Copy Graphs and View Graphs on your computer   
+`scp -i my.key reviewer@hp025.utah.cloudlab.us:/users/reviewer/xdp_fwd/rx/0.png .`  
+`scp -i my.key reviewer@hp025.utah.cloudlab.us:/users/reviewer/xdp_fwd/o1_avgL.png .`   
 where hp025 is node-1.
 
 ### Exercise 2: Run one version of a benchmark that DOES drop packets. 
@@ -129,8 +129,8 @@ The graph will be located in `$HOME/xdp_map/rx/` and is called `0.png`.
 
  <img src="instruction-images/exercise-2.png" width="500px">
 
-7) Copy Graphs and View Graphs on your computer 
-`scp -i my.key reviewer@hp024.utah.cloudlab.us:/users/reviewer/xdp_fwd/rx/0.png .`
+7) Copy Graphs and View Graphs on your computer   
+`scp -i my.key reviewer@hp024.utah.cloudlab.us:/users/reviewer/xdp_map/rx/0.png .`
 where hp024 is node-0
 
 ### Exercise 3: Run all versions of a benchmark (that DOES NOT drop packets) three times each. 
