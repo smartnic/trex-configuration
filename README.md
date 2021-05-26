@@ -108,7 +108,7 @@ The graph will be located in `$HOME/xdp_fwd/` directory and is called `o1_avgL.p
 
   <img src="instruction-images/O1_avgL.png" width="500px">
 
-7) Copy Graphs and View Graphs on your computer   
+7) Copy Graphs and View Graphs on your computer. Execute the following on your LOCAL computer.   
 `scp -i my.key reviewer@hp025.utah.cloudlab.us:/users/reviewer/xdp_fwd/rx/0.png .`  
 `scp -i my.key reviewer@hp025.utah.cloudlab.us:/users/reviewer/xdp_fwd/o1_avgL.png .`   
 where hp025 is node-1.
@@ -120,18 +120,19 @@ Estimated Run Time: 30 minutes
 3) Start run: `nohup python3 -u run_mlffr_user.py -b xdp_map_access -v o1 -d xdp_map -n 1 -c 6 > $HOME/map.txt &`. This proccess will run in the background; therefore, press enter. 
 4) Check progress of logs `tail -f $HOME/map.txt`
 5) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs. The logs are located in node0.
-6) SSH in node0. and `cd /usr/local/trex-configuration/visualize-data-scripts/` 
-7) Generate throughput: `python3 generate_user_graphs.py -d ~/xdp_map -v o1 -b xdp_map_access -r 0`
+6) SSH to node0. e.g. `ssh -p 22 -i my.key reviewer@hp124.utah.cloudlab.us`
+7) `cd /usr/local/trex-configuration/visualize-data-scripts/` 
+8) Generate throughput: `python3 generate_user_graphs.py -d ~/xdp_map -v o1 -b xdp_map_access -r 0`
 The graph will be located in `$HOME/xdp_map/rx/` and is called `0.png`.
 
  <img src="instruction-images/exercise-2.png" width="500px">
 
-7) Copy Graphs and View Graphs on your computer   
+7) Copy Graphs and View Graphs on your computer. Execute the following on your LOCAL computer.   
 `scp -i my.key reviewer@hp024.utah.cloudlab.us:/users/reviewer/xdp_map/rx/0.png .`
 where hp024 is node-0
 
 ### Exercise 3: Run all versions of a benchmark (that DOES NOT drop packets) three times each. 
-Estimated Run time: 6 hours 
+Estimated Run time: 8 hours 
 1) SSH into Node-1: e.g. `ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us` where my.key is your private ssh key on your local computer and hp125 will be replace with node1 in your experiment.
 2) Change to directory: `cd /usr/local/v2.87`
 3) Start run: `nohup python3 -u run_mlffr.py -b xdp_fwd -d xdp_fwd_all -n 3 -c 6 > $HOME/xdp_fwd_log.txt &`. This proccess will run in the background; therefore, press enter. 
