@@ -121,7 +121,7 @@ Estimated Run Time: 30 minutes
 4) Check progress of logs `tail -f $HOME/map.txt`
 5) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs. The logs are located in node0.
 6) SSH in node0. and `cd /usr/local/trex-configuration/visualize-data-scripts/` 
-7) Generate throughput: `python3 generate_user_graphs.py -d ~/xdp_map -v O1 -b xdp_map_access -r 0`
+7) Generate throughput: `python3 generate_user_graphs.py -d ~/xdp_map -v o1 -b xdp_map_access -r 0`
 The graph will be located in `$HOME/xdp_map/rx/` and is called `0.png`.
 
  <img src="instruction-images/exercise-2.png" width="500px">
