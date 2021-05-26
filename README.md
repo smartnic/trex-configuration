@@ -86,16 +86,19 @@ scp -i my.key my.key reviewer@hp125.utah.cloudlab.us:~/.ssh/id_ed25519
 ssh -p 22 reviewer@hp124.utah.cloudlab.us
 ```
 
-where you will replace hp124.utah.cloudlab.us by the name of the node-0 machine from the CloudLab console. You should be able to connect to node-0.
+where you will replace hp124.utah.cloudlab.us by the name of the node-0 machine from the CloudLab console. You should be able to connect to node-0. Then, exit out of node-0 session.
 
 ## Exercises
 *Note: All DATA and logs, graphs are saved in your home directory on cloudlab. In order to view the graphs, copy the file to local computer. *
 
+View graphs on your local computer. 
+`scp -i my.key reviewer@hp025.utah.cloudlab.us:[path]/[graph-name].png .`
+
 ### Exercise 1: Run one version of a benchmark that DOES NOT drop packets. 
 Estimated Run Time: 30 minutes
-1) SSH into Node1
+1) SSH into Node-1: e.g. `ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us` where my.key is your private ssh key on local and hp125 will be replace with node1 in your experiment.
 2) Change to directory: `cd /usr/local/v2.87`
-3) Start run: `nohup python3 -u run_mlffr.py -b xdp_fwd -v o1 -d xdp_fwd/ -n 1 -c 6 &`
+3) Start run: `nohup python3 -u run_mlffr.py -b xdp_fwd -v o1 -d xdp_fwd/ -n 1 -c 6 &`. This proccess will run in the background; therefore, press enter. 
 4) Check progress of logs `tail -f $HOME/nohup.out`
 5) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs. `cd /usr/local/trex-configuration/visualize-data-scripts/`
 6) Generate throughput: `python3 rx_plot.py -d ~/xdp_fwd -v o1 -b xdp_fwd -r 0`
@@ -108,12 +111,16 @@ The graph will be located in `$HOME/xdp_fwd/` directory and is called `o1_avgL.p
 
   <img src="instruction-images/O1_avgL.png" width="500px">
 
+7) Copy Graphs and View Graphs on your computer 
+`scp -i my.key reviewer@hp025.utah.cloudlab.us:/users/reviewer/xdp_fwd/rx/0.png .`
+`scp -i my.key reviewer@hp025.utah.cloudlab.us:/users/reviewer/xdp_fwd/o1_avgL.png .`
+where hp025 is node-1.
 
 ### Exercise 2: Run one version of a benchmark that DOES drop packets. 
 Estimated Run Time: 30 minutes
-1) SSH into Node1 
+1) SSH into Node-1: e.g. `ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us` where my.key is your private ssh key on local and hp125 will be replace with node1 in your experiment.
 2) Change to directory: `cd /usr/local/v2.87`
-3) Start run: `nohup python3 -u run_mlffr_user.py -b xdp_map_access -v o1 -d xdp_map -n 1 -c 6 > $HOME/map.txt &`
+3) Start run: `nohup python3 -u run_mlffr_user.py -b xdp_map_access -v o1 -d xdp_map -n 1 -c 6 > $HOME/map.txt &`. This proccess will run in the background; therefore, press enter. 
 4) Check progress of logs `tail -f $HOME/map.txt`
 5) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs. The logs are located in node0.
 6) SSH in node0. and `cd /usr/local/trex-configuration/visualize-data-scripts/` 
@@ -122,11 +129,15 @@ The graph will be located in `$HOME/xdp_map/rx/` and is called `0.png`.
 
  <img src="instruction-images/exercise-2.png" width="500px">
 
+7) Copy Graphs and View Graphs on your computer 
+`scp -i my.key reviewer@hp024.utah.cloudlab.us:/users/reviewer/xdp_fwd/rx/0.png .`
+where hp024 is node-0
+
 ### Exercise 3: Run all versions of a benchmark (that DOES NOT drop packets) three times each. 
 Estimated Run time: 6 hours 
-1) SSH into Node1
+1) SSH into Node-1: e.g. `ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us` where my.key is your private ssh key on local and hp125 will be replace with node1 in your experiment.
 2) Change to directory: `cd /usr/local/v2.87`
-3) Start run: `nohup python3 -u run_mlffr.py -b xdp_fwd -d xdp_fwd_all -n 3 -c 6 > $HOME/xdp_fwd_log.txt &`
+3) Start run: `nohup python3 -u run_mlffr.py -b xdp_fwd -d xdp_fwd_all -n 3 -c 6 > $HOME/xdp_fwd_log.txt &`. This proccess will run in the background; therefore, press enter. 
 4) Check progress of logs `tail -f $HOME/xdp_fwd_log.txt`
 5) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs.
 `cd /usr/local/trex-configuration/visualize-data-scripts/` 
@@ -134,9 +145,9 @@ Estimated Run time: 6 hours
 
 ### Exercise 4: Run all versions of a benchmark (that DOES drop packets) three times each. 
 Estimated Run Time: 6 hours 
-1) SSH into Node1
+1) SSH into Node-1: e.g. `ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us` where my.key is your private ssh key on local and hp125 will be replace with node1 in your experiment.
 2) Change to directory: `cd /usr/local/v2.87`
-3) Start run: `nohup python3 -u run_mlffr_user.py -b xdp_map_access -d xdp_map_all -n 3 -c 6 > $HOME/map_all.txt &`
+3) Start run: `nohup python3 -u run_mlffr_user.py -b xdp_map_access -d xdp_map_all -n 3 -c 6 > $HOME/map_all.txt &`. This proccess will run in the background; therefore, press enter. 
 4) Check progress of logs `tail -f $HOME/map_all.txt`
 5) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs.
 `cd /usr/local/trex-configuration/visualize-data-scripts/` 
