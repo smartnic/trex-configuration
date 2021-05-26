@@ -52,11 +52,10 @@ The experiment consists of two nodes, labeled node-0 and node-1. Node-0 serves a
  ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us
  ```
  
-3) Once logged into node-1, use your favorite text editor to add the line 
+3) Once logged into node-1, use your favorite text editor to add the following line to ~/.bash_profile.
 
    ```export PYTHONPATH=/usr/local/v2.87/automation/trex_control_plane/interactive``` 
 
-to ~/.bash_profile.
 
 4) `cd /usr/local/trex-configuration/`
 
@@ -98,20 +97,19 @@ Estimated Run Time: 30 minutes
 3) Start run: `nohup python3 -u run_mlffr.py -b xdp_fwd -v o1 -d xdp_fwd/ -n 1 -c 6 &`. This proccess will run in the background; therefore, press enter. 
 4) Check progress of logs `tail -f $HOME/nohup.out`
 5) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs. `cd /usr/local/trex-configuration/visualize-data-scripts/`
-6) Generate throughput: `python3 rx_plot.py -d ~/xdp_fwd -v o1 -b xdp_fwd -r 0`
+6) Generate throughput graph: `python3 rx_plot.py -d ~/xdp_fwd -v o1 -b xdp_fwd -r 0`  
 The graph will be located in the `$HOME/xdp_fwd/rx` directory and is called `0.png`.
-
- <img src="instruction-images/0.png" width="500px">
  
-6) Generate latency: `python3 latency.py -d ~/xdp_fwd -type avg -v o1 -b xdp_fwd`
+7) Generate latency graph: `python3 latency.py -d ~/xdp_fwd -type avg -v o1 -b xdp_fwd`  
 The graph will be located in `$HOME/xdp_fwd/` directory and is called `o1_avgL.png`.
 
-  <img src="instruction-images/O1_avgL.png" width="500px">
-
-7) Copy Graphs and View Graphs on your computer. Execute the following on your LOCAL computer.   
+8) Copy Graphs and View Graphs on your computer. Execute the following on your LOCAL computer.   
 `scp -i my.key reviewer@hp025.utah.cloudlab.us:/users/reviewer/xdp_fwd/rx/0.png .`  
 `scp -i my.key reviewer@hp025.utah.cloudlab.us:/users/reviewer/xdp_fwd/o1_avgL.png .`   
 where hp025 is node-1.
+
+<img src="instruction-images/0.png" width="400px"> <img src="instruction-images/O1_avgL.png" width="400px">
+
 
 ### Exercise 2: Run one version of a benchmark that DOES drop packets. 
 Estimated Run Time: 30 minutes
@@ -122,14 +120,13 @@ Estimated Run Time: 30 minutes
 5) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs. The logs are located in node0.
 6) SSH to node0. e.g. `ssh -p 22 -i my.key reviewer@hp124.utah.cloudlab.us`
 7) `cd /usr/local/trex-configuration/visualize-data-scripts/` 
-8) Generate throughput: `python3 generate_user_graphs.py -d ~/xdp_map -v o1 -b xdp_map_access -r 0`
+8) Generate throughput graph: `python3 generate_user_graphs.py -d ~/xdp_map -v o1 -b xdp_map_access -r 0`  
 The graph will be located in `$HOME/xdp_map/rx/` and is called `0.png`.
-
- <img src="instruction-images/exercise-2.png" width="500px">
-
 7) Copy Graphs and View Graphs on your computer. Execute the following on your LOCAL computer.   
 `scp -i my.key reviewer@hp024.utah.cloudlab.us:/users/reviewer/xdp_map/rx/0.png .`
 where hp024 is node-0
+
+<img src="instruction-images/exercise-2.png" width="400px">
 
 ### Exercise 3: Run all versions of a benchmark (that DOES NOT drop packets) three times each. 
 Estimated Run time: 8 hours 
