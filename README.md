@@ -166,3 +166,47 @@ Estimated Run Time: 6 hours
 5) Once it has completed running (it will say *Completed Full Script* in the logs), you will now generate the graphs.
 `cd /usr/local/trex-configuration/visualize-data-scripts/` 
 5) Generate throughput graphs: `python3 generate_user_graphs.py -d ~/xdp_map_all -b xdp_map_access -r 3 -average`
+
+
+## 8 Efficacy of safety checks (Table 7 in the submitted paper appendix)
+
+This section evaluates whether the programs optimized by K2 can pass the kernel verifier. We check this by
+loading the programs in the kernel. If the program can be successfully loaded, it means this program passes
+the kernel verifier. Otherwise, we will receive the error information from kernel. Since it takes long time 
+(more than 12 hours) for K2 to optimize all benchmarks in the table, we directly use the optimized programs 
+produced by K2 from the [log](https://github.com/smartnic/throughput-experiments/tree/main/completed-programs) 
+that were produced when we submitted the manuscript.
+
+Note: There is a typo in Table 7 in the submitted paper. K2 produced 3 unique programs for benchmark 
+`xdp_pktcntr` instead of 5. We will fix it in the camera-ready version.
+
+### Run
+
+Estimated runtime: 2 minutes 30 seconds
+
+1) SSH into Node-0: suppose currently you are on Node-1 machine
+```
+ssh -p 22 reviewer@hp124.utah.cloudlab.us
+```
+where you will replace hp124.utah.cloudlab.us by the name of the node-0 machine from the CloudLab console.
+2) 
+```
+cd /usr/local/trex-configuration/safety_chk
+sudo python3 safety_chk.py
+```
+
+#### Expected result:
+```
++-----------------+---------------------+------------------------------+
+|    Benchmark    | # variants produced | # accepted by kernel checker |
++-----------------+---------------------+------------------------------+
+|       xdp2      |          5          |              4               |
+|      xdp_fw     |          5          |              5               |
+| xdp_router_ipv4 |          5          |              4               |
+|     xdp_fwd     |          5          |              5               |
+|   xdp_pktcntr   |          3          |              3               |
+|       xdp1      |          5          |              5               |
+|  xdp_map_access |          5          |              5               |
+|   xdp_redirect  |          5          |              4               |
++-----------------+---------------------+------------------------------+
+```
