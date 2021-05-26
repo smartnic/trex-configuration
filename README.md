@@ -91,9 +91,6 @@ where you will replace hp124.utah.cloudlab.us by the name of the node-0 machine 
 ## Exercises
 *Note: All DATA and logs, graphs are saved in your home directory on cloudlab. In order to view the graphs, copy the file to local computer. *
 
-View graphs on your local computer. 
-`scp -i my.key reviewer@hp025.utah.cloudlab.us:[path]/[graph-name].png .`
-
 ### Exercise 1: Run one version of a benchmark that DOES NOT drop packets. 
 Estimated Run Time: 30 minutes
 1) SSH into Node-1: e.g. `ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us` where my.key is your private ssh key on local and hp125 will be replace with node1 in your experiment.
