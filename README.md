@@ -93,7 +93,7 @@ where you will replace hp124.utah.cloudlab.us by the name of the node-0 machine 
 
 ### Exercise 1: Run one version of a benchmark that DOES NOT drop packets. 
 Estimated Run Time: 30 minutes
-1) SSH into Node-1: e.g. `ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us` where my.key is your private ssh key on local and hp125 will be replace with node1 in your experiment.
+1) SSH into Node-1: e.g. `ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us` where my.key is your private ssh key on your local computer and hp125 will be replace with node1 in your experiment.
 2) Change to directory: `cd /usr/local/v2.87`
 3) Start run: `nohup python3 -u run_mlffr.py -b xdp_fwd -v o1 -d xdp_fwd/ -n 1 -c 6 &`. This proccess will run in the background; therefore, press enter. 
 4) Check progress of logs `tail -f $HOME/nohup.out`
@@ -115,7 +115,7 @@ where hp025 is node-1.
 
 ### Exercise 2: Run one version of a benchmark that DOES drop packets. 
 Estimated Run Time: 30 minutes
-1) SSH into Node-1: e.g. `ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us` where my.key is your private ssh key on local and hp125 will be replace with node1 in your experiment.
+1) SSH into Node-1: e.g. `ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us` where my.key is your private ssh key on your local computer and hp125 will be replace with node1 in your experiment.
 2) Change to directory: `cd /usr/local/v2.87`
 3) Start run: `nohup python3 -u run_mlffr_user.py -b xdp_map_access -v o1 -d xdp_map -n 1 -c 6 > $HOME/map.txt &`. This proccess will run in the background; therefore, press enter. 
 4) Check progress of logs `tail -f $HOME/map.txt`
@@ -132,7 +132,7 @@ where hp024 is node-0
 
 ### Exercise 3: Run all versions of a benchmark (that DOES NOT drop packets) three times each. 
 Estimated Run time: 6 hours 
-1) SSH into Node-1: e.g. `ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us` where my.key is your private ssh key on local and hp125 will be replace with node1 in your experiment.
+1) SSH into Node-1: e.g. `ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us` where my.key is your private ssh key on your local computer and hp125 will be replace with node1 in your experiment.
 2) Change to directory: `cd /usr/local/v2.87`
 3) Start run: `nohup python3 -u run_mlffr.py -b xdp_fwd -d xdp_fwd_all -n 3 -c 6 > $HOME/xdp_fwd_log.txt &`. This proccess will run in the background; therefore, press enter. 
 4) Check progress of logs `tail -f $HOME/xdp_fwd_log.txt`
@@ -142,7 +142,7 @@ Estimated Run time: 6 hours
 
 ### Exercise 4: Run all versions of a benchmark (that DOES drop packets) three times each. 
 Estimated Run Time: 6 hours 
-1) SSH into Node-1: e.g. `ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us` where my.key is your private ssh key on local and hp125 will be replace with node1 in your experiment.
+1) SSH into Node-1: e.g. `ssh -p 22 -i my.key reviewer@hp125.utah.cloudlab.us` where my.key is your private ssh key on  your local computer and hp125 will be replace with node1 in your experiment.
 2) Change to directory: `cd /usr/local/v2.87`
 3) Start run: `nohup python3 -u run_mlffr_user.py -b xdp_map_access -d xdp_map_all -n 3 -c 6 > $HOME/map_all.txt &`. This proccess will run in the background; therefore, press enter. 
 4) Check progress of logs `tail -f $HOME/map_all.txt`
