@@ -34,7 +34,7 @@ def get_mlffr(directory, run, benchmark, version):
     if version:
         versions = [version]
     else:
-        versions = ["o1", "o2", "k0", "k1", "k2", "k3", "k4"]
+        versions = ["k0", "k1", "k2", "k3", "k4", "o1", "o2"]
     for v in versions:
         arr = []
         for x in rates:
@@ -61,7 +61,7 @@ def mlffr_averages(directory, benchmark, run, version):
         df = df.merge(new_df, how="outer", on=None, left_index=True, right_index=True, suffixes=('_1', '_2'))
     if run <= 1:
         return
-    versions = ["o1", "o2", "k0", "k1", "k2", "k3", "k4"]
+    versions = ["k0", "k1", "k2", "k3", "k4", "o1", "o2"]
     if (version):
         versions = [version]
     for v in versions:
@@ -92,7 +92,7 @@ if __name__ == '__main__':
     parser.add_argument('-average', action='store_true')
     args = parser.parse_args()
     if (args.average):
-        mlffr_averages(args.directory, args.benchmark, args.runs)
+        mlffr_averages(args.directory, args.benchmark, args.runs, None)
     else: 
         get_mlffr(args.directory, args.runs, args.benchmark, args.version)
 

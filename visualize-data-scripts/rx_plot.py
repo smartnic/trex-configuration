@@ -8,7 +8,7 @@ def rx(directory, benchmark, run, version):
     file = pd.read_csv(f'{directory}/MLFFR_o1_t.txt', index_col=0)
     df["index"] = list(file.index)
     df.set_index("index", inplace=True)
-    versions = ["o1", "o2", "k0", "k1", "k2", "k3", "k4"]
+    versions = ["k0", "k1", "k2", "k3", "k4", "o1", "o2"]
     if version != "":
         versions = [version]
     if len(versions) > 1 and benchmark == "xdp2" or benchmark == "xdp_router_ipv4":
@@ -37,10 +37,10 @@ def rx(directory, benchmark, run, version):
 def rx_avg(directory, benchmark, runs):
     df = pd.DataFrame()
     for x in range(runs):
-        new_df = rx(directory, benchmark, str(x))
+        new_df = rx(directory, benchmark, str(x), "")
         df = df.merge(new_df, how="outer", on=None, left_index=True, right_index=True)
     
-    versions = ["o1", "o2", "k0", "k1", "k2", "k3", "k4"]
+    versions = ["k0", "k1", "k2", "k3", "k4", "o1", "o2"]
     if benchmark == "xdp2" or benchmark == "xdp_router_ipv4":
         versions.remove("k2")
     for v in versions:
@@ -59,6 +59,8 @@ def rx_avg(directory, benchmark, runs):
     if not os.path.exists(savePath):
         os.makedirs(savePath)
     fig.savefig(f'{savePath}/avg.png', bbox_inches='tight')
+    df.to_csv(f"{directory}/rx-data.csv")
+    #print(means)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Information about Data')

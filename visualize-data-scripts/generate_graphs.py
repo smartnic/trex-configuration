@@ -8,7 +8,7 @@ from rx_plot import *
 parser = argparse.ArgumentParser(description='Information about Data')
 parser.add_argument('-d', dest="directory", type=str, help='Directory', required=True)
 parser.add_argument('-b', dest="benchmark", type=str, help='Benchmark', required=True)
-parser.add_argument('-r', dest="runs", type=str, help='Total Number of Runs (greater than 1)', required=True)
+parser.add_argument('-r', dest="runs", type=int, help='Total Number of Runs (greater than 1)', required=True)
 args = parser.parse_args()
 
 # generate drop rate graphs
