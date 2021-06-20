@@ -5,10 +5,10 @@ import argparse
 
 interfaces = ["ens3f1"]
 programs = {
-    "xdp2": ("xdp2_kern", "completed-programs/kernel_samples_xdp2_kern_xdp1_runtime_debug"),
-    "xdp_fw": ("xdp_fw_kern", "completed-programs/simple_fw_xdp_fw_runtime_debug"),
-    "xdp_router_ipv4": ("xdp_router_ipv4_kern", "completed-programs/kernel_samples_xdp_router_ipv4_runtime_debug"),
-    "xdp_fwd": ("xdp_fwd_kern", "completed-programs/kernel_samples_xdp_fwd_kern_xdp_fwd_runtime_debug")
+    "xdp2": ("xdp2_kern", "completed-programs/camera_ready/kernel_samples_xdp2_kern_xdp1_0611_073defe_runtime"),
+    "xdp_fw": ("xdp_fw_kern", "completed-programs/camera_ready/simple_fw_xdp_fw_kern_xdp_fw_0611_073defe_runtime"),
+    "xdp_router_ipv4": ("xdp_router_ipv4_kern", "completed-programs/camera_ready/kernel_samples_xdp_router_ipv4_0611_073defe_runtime"),
+    "xdp_fwd": ("xdp_fwd_kern", "completed-programs/camera_ready/kernel_samples_xdp_fwd_kern_xdp_fwd_0611_073defe_runtime")
 }
 parser = argparse.ArgumentParser(description='Information about Data')
 parser.add_argument('-b', dest="benchmark", type=str, help=f"Benchmark {str(programs.keys())}", required=True)
