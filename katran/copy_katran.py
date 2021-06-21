@@ -12,7 +12,7 @@ parser.add_argument('-v', dest="version", type=str, help='Name of version (e.g O
 args = parser.parse_args()
 
 home = "/root"
-os.system("rm /katran/_build/deps/bpfprog/bpf/balancer_kern.o")
+os.system("rm ~/katran/_build/deps/bpfprog/bpf/balancer_kern.o")
 os.chdir(f"{home}/throughput-experiments")
 
 if "k" in args.version.lower():

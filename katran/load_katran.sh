@@ -11,7 +11,7 @@ cd ../katran/_build
 echo "Starting Katran.  -v6 provides higher debug"
 nohup sudo ./build/example_grpc/katran_server_grpc -v 6 -balancer_prog $file -default_mac $mac_addr -hc_forwarding=false -intf=$interface  -lru_size=10000 > ~/log.txt &
 sleep 5
-cd ../
+cd ~/katran
 ./katran_goclient -A -u 10.200.200.1:1025
 sleep 1
 for i in $(seq 1 100); do ./katran_goclient -u 10.200.200.1:1025 -a -r 10.0.0.$i; done;
