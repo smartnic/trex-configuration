@@ -5,9 +5,9 @@ import argparse
 from os.path import expanduser
 
 default_ranges = {
-    "balancer_kern": (8.5, 10.5, 0.1),
+    "balancer_kern": (1, 5, 0.5),
 }
-benchmarks = ["xdp2", "xdp_fw", "xdp_router_ipv4", "xdp_fwd"]
+benchmarks = ["balancer_kern"]
 parser = argparse.ArgumentParser()
 parser.add_argument('-b', dest="benchmark", type=str, help=f"Benchmark {str(benchmarks)}", required=True)
 parser.add_argument('-d', dest="directory", type=str, help='Directory', required=True)
@@ -61,7 +61,7 @@ for x in range (args.number):
     for v in versionList:
         print(f"Running {v}")
         print(f"Loading xdp...")
-        os.system(f"ssh -p 22 {node0} \"sh -c 'python3 -u /usr/local/trex-configuration/katran/load_xdp.py -b {args.benchmark} -v {v} 1>load_log.txt 2>err.txt &'\"")
+        os.system(f"ssh -p 22 {node0} \"sh -c 'python3 -u /usr/local/trex-configuration/katran/load_katran.py -b {args.benchmark} -v {v} 1>load_log.txt 2>err.txt &'\"")
         time.sleep(60)
         print("MLFFR...")
         os.system(f"python3 -u mlffr.py -d {args.directory} -v {v} -r {x} -mS {start} -mE {end} -i {increment} -rx 0")
