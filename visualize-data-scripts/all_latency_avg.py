@@ -12,8 +12,6 @@ def avg_latency(directory, benchmark, gtype):
     df["index"] = list(file.index)
     df.set_index("index", inplace=True)
     versions = ["k0", "k1", "k2", "k3", "k4", "o1","o2"]
-    if benchmark == "xdp2" or benchmark == "xdp_router_ipv4":
-        versions.remove("k2")
     for i in versions:
         file = pd.read_csv(f'{directory}/MLFFR_{i}_{gtype}L.txt', index_col=0)
         file['mean'] = file.mean(axis=1)

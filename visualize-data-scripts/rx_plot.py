@@ -11,8 +11,6 @@ def rx(directory, benchmark, run, version):
     versions = ["k0", "k1", "k2", "k3", "k4", "o1", "o2"]
     if version != "":
         versions = [version]
-    if len(versions) > 1 and benchmark == "xdp2" or benchmark == "xdp_router_ipv4":
-        versions.remove("k2")
     for i in versions:
         file = pd.read_csv(f'{directory}/MLFFR_{i}_{run}_full.txt', index_col=0)
         arr = []
@@ -41,8 +39,6 @@ def rx_avg(directory, benchmark, runs):
         df = df.merge(new_df, how="outer", on=None, left_index=True, right_index=True)
     
     versions = ["k0", "k1", "k2", "k3", "k4", "o1", "o2"]
-    if benchmark == "xdp2" or benchmark == "xdp_router_ipv4":
-        versions.remove("k2")
     for v in versions:
         temp = df.loc[:, df.columns.str.contains(v)]
         temp['mean'] = temp.mean(axis=1)

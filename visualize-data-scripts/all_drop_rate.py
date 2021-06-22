@@ -10,8 +10,6 @@ def dropRate(directory, benchmark, run):
     df["index"] = list(file.index)
     df.set_index("index", inplace=True)
     versions = ["o1", "o2", "k0", "k1", "k2", "k3", "k4"]
-    if benchmark == "xdp2" or benchmark == "xdp_router_ipv4":
-        versions.remove("k2")
     for i in versions:
         file = pd.read_csv(f'{directory}/MLFFR_{i}_t.txt', index_col=0)
         df[i] = file[run]
