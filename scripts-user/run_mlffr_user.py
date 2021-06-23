@@ -6,10 +6,11 @@ from os.path import expanduser
 
 default_ranges = {
     "xdp1": (10,30),
-    "xdp_map_access": (12,22)    
+    "xdp_map_access": (12,22),
+    "xdp_redirect": (1, 30),
 }
 startTime = time.time()
-benchmarks = ["xdp1", "xdp_map_access"]
+benchmarks = ["xdp1", "xdp_map_access", "xdp_redirect"]
 parser = argparse.ArgumentParser()
 parser.add_argument('-b', dest="benchmark", type=str, help=f"Benchmark {str(benchmarks)}", required=True)
 parser.add_argument('-d', dest="directory", type=str, help='Directory', required=True)
