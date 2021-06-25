@@ -61,7 +61,7 @@ for x in range (args.number):
     for v in versionList:
         print(f"Running {v}")
         print(f"Loading xdp...")
-        os.system(f"ssh -p 22 {node0} \"sh -c 'python3 -u /usr/local/trex-configuration/katran/load_katran.py -b {args.benchmark} -v {v} 1>load_log.txt 2>err.txt &'\"")
+        os.system(f"ssh -p 22 {node0} \"sh -c 'sudo su - root /root/trex-configuration/katran/load_katran.sh O2 1>load_log.txt 2>err.txt &'\"")
         time.sleep(60)
         print("MLFFR...")
         os.system(f"python3 -u mlffr.py -d {args.directory} -v {v} -r {x} -mS {start} -mE {end} -i {increment} -rx 0")
