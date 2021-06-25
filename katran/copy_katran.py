@@ -14,8 +14,8 @@ args = parser.parse_args()
 home = "/root"
 os.system("rm ~/katran/_build/deps/bpfprog/bpf/balancer_kern.o")
 os.chdir(f"{home}/throughput-experiments")
-
+number = list(args.version)[1]
 if "k" in args.version.lower():
-    os.system(f"sudo cp {programs[args.benchmark][1]}/top-progs/{programs[args.benchmark][0]}{number}.o {home}/katran/_build/deps/bpfprog/bpf/balancer_kern.o")
+    os.system(f"sudo cp {programs[args.benchmark][1]}/top-progs2/{programs[args.benchmark][0]}{args.version[1:]}.o {home}/katran/_build/deps/bpfprog/bpf/balancer_kern.o")
 else:
     os.system(f"sudo cp {args.version.upper()}/{programs[args.benchmark][0]}.o {home}/katran/_build/deps/bpfprog/bpf/balancer_kern.o")

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # remove file and copy file 
+sudo su - 
+cd trex-configuration/katran
 python3 -u copy_katran.py -v $1
 sleep 10
 interface="ens1f1"
@@ -15,5 +17,6 @@ cd ~/katran
 ./katran_goclient -A -u 10.200.200.1:1025
 sleep 1
 for i in $(seq 1 100); do ./katran_goclient -u 10.200.200.1:1025 -a -r 10.0.0.$i; done;
+sleep 5
 #./katran_goclient -a -u 10.200.200.1:1025 -r 10.10.1.2
 #./katran_goclient -l
