@@ -16,7 +16,7 @@ parser.add_argument('-n', dest="number", type=int, help='Number of times each ve
 parser.add_argument('-c', dest="cores", type=int, help='Number of cores', default=14)
 parser.add_argument('-mS', dest="start", type=int, help='Start Mpps')
 parser.add_argument('-mE', dest="end", type=int, help='End Mpps')
-parser.add_argument('-i', dest="increment", type=int, help='Increment Mpps')
+parser.add_argument('-i', dest="increment", type=float, help='Increment Mpps')
 args = parser.parse_args()
 home = expanduser("~")
 
@@ -24,7 +24,7 @@ versionList = []
 if (args.version):
     versionList.append(args.version)
 else:
-    versionList = ["o1", "o2", "k0", "k1", "k2", "k3", "k4"]
+    versionList = ["o2", "k0", "k1", "k2", "k3", "k4", "k5", "k6"]
 if (not args.benchmark in benchmarks):
     print(f"Invalid benchmark name. {str(benchmarks)}")
 
@@ -66,7 +66,7 @@ for x in range (args.number):
         print("MLFFR...")
         os.system(f"python3 -u mlffr.py -d {args.directory} -v {v} -r {x} -mS {start} -mE {end} -i {increment} -rx 0")
         print("Unloading xdp")
-        os.system(f"ssh -p 22 {node0} 'python3 /usr/local/trex-configuration/katran/unload_katran.py; exit'")
+        os.system(f"ssh -p 22 {node0} 'sudo su - root /root/trex-configuration/katran/unload_katran.sh; exit'")
         time.sleep(60)
 
 print("Stopping T-rex and all its children")

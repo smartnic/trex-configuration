@@ -12,14 +12,14 @@ parser.add_argument('-r', dest="runs", type=int, help='Total Number of Runs (gre
 args = parser.parse_args()
 
 # generate drop rate graphs
-for x in range(args.runs):
-    dropRate(args.directory, args.benchmark, str(x))
-if (args.runs > 1):
-    avg_drop(args.directory, args.benchmark)
+# for x in range(args.runs):
+#     dropRate(args.directory, args.benchmark, str(x))
+# if (args.runs > 1):
+#     avg_drop(args.directory, args.benchmark)
 
 # generate latency graphs
 for t in ["max", "min", "avg"]:
-    for x in range(3):
+    for x in range(args.runs):
         latency_graphs(args.directory, args.benchmark, str(x), t)
     if (args.runs > 1):
         avg_latency(args.directory, args.benchmark, t)
@@ -28,4 +28,4 @@ for t in ["max", "min", "avg"]:
 if (args.runs > 1):
     rx_avg(args.directory, args.benchmark, args.runs)
 else: 
-    rx(args.directory, args.benchmark, 0)
+    rx(args.directory, args.benchmark, 0, "")
