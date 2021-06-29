@@ -5,9 +5,9 @@ import argparse
 from os.path import expanduser
 
 default_ranges = {
-    "xdp1": (10,30),
-    "xdp_map_access": (12,22),
-    "xdp_redirect": (1, 30),
+    "xdp1": (17,19,0.1),
+    "xdp_map_access": (14.6,16,0.1),
+    "xdp_redirect": (1,30,1),
 }
 startTime = time.time()
 benchmarks = ["xdp1", "xdp_map_access", "xdp_redirect"]
@@ -19,6 +19,7 @@ parser.add_argument('-n', dest="number", type=int, help='Number of times each ve
 parser.add_argument('-c', dest="cores", type=int, help='Number of cores', default=14)
 parser.add_argument('-mS', dest="start", type=int, help='Start Mpps')
 parser.add_argument('-mE', dest="end", type=int, help='End Mpps')
+parser.add_argument('-i', dest="increment", type=int, help='Increment Mpps')
 
 args = parser.parse_args()
 versionList = []
@@ -36,6 +37,10 @@ if not args.end:
     end = default_ranges[args.benchmark][1]
 else:
     end = args.end
+if not args.increment:
+    increment = default_ranges[args.benchmark][2]
+else:
+    increment = args.increment
 # Read node0 configuration
 f = open("node0.config", "r")
 node0 = f.read()
@@ -54,7 +59,7 @@ for x in range (args.number):
     for v in versionList:
         print(f"Running {v}")
         print("MLFFR...")
-        os.system(f"python3 -u mlffr_user.py -b {args.benchmark} -d {args.directory} -v {v} -r {x} -mS {start} -mE {end} -i 1 -rx 0")
+        os.system(f"python3 -u mlffr_user.py -b {args.benchmark} -d {args.directory} -v {v} -r {x} -mS {start} -mE {end} -i {increment} -rx 0")
         time.sleep(10)
 
 print("Stopping T-rex and all its children")

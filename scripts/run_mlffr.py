@@ -7,8 +7,8 @@ from os.path import expanduser
 default_ranges = {
     "xdp2": (8.5, 10.5, 0.1),
     "xdp_fw": (1,15,1),
-    "xdp_router_ipv4": (1,2.4, 0.1),
-    "xdp_fwd": (4.4, 5.4, 0.1),
+    "xdp_router_ipv4": (1.5, 1.7, 0.01),
+    "xdp_fwd": (4.9, 5.1, 0.01),
     "xdp_pktcntr": (1, 30, 2),
 }
 benchmarks = ["xdp2", "xdp_fw", "xdp_router_ipv4", "xdp_fwd", "xdp_pktcntr"]
