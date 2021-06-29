@@ -1,10 +1,7 @@
 # Katran Performance Experiments
 
-### CloudLab Experiment Setup 
 
-[Estimated Human Time: 30 minutes]
-
-#### Step 1: Create Experiment
+### Step 1: Create Experiment
 
 Visit https://cloudlab.us/ and click the "Log in" button. Please use the CloudLab account username and password provided in our SIGCOMM21 artifact hotCRP submission to log into the CloudLab console.
 
@@ -15,7 +12,7 @@ Visit https://cloudlab.us/ and click the "Log in" button. Please use the CloudLa
 <img src="instruction-images/change-profile.png" width="700px" />
 
 ##### Step 1.3: Select katran-and-t-rex Profile
-<img src="instruction-images/katran-and-trex\ profile.png" width="700px" />
+<img src="instruction-images/katran-and-trex profile.png" width="700px" />
 
 ##### Step 1.4: Name Experiment (optional)
 <img src="instruction-images/name-expr.png" width="700px" />
@@ -35,7 +32,7 @@ If your experiment is successfully scheduled, it might still keep you waiting wi
 
 Contact us or the CloudLab mailing list (https://groups.google.com/g/cloudlab-users) if you have any difficulties.
 
-#### Step 2: Configure The Nodes
+### Step 2: Configure The Nodes
 
 The experiment consists of two nodes, labeled node-0 and node-1. Node-0 serves as the device-under-test (DUT) , which runs the **balancer_kern packet processing programs from katran**. Node-1 runs a traffic generator. By sending and receiving from the same machine, the traffic generator measures both the throughput and the round-trip latencies of packets that are processed by the device under test. The detailed setup is described in section 8 of the submitted paper.
 
