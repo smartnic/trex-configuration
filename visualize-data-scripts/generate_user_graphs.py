@@ -26,7 +26,7 @@ def parse_file(name, benchmark):
 def get_mlffr(directory, run, benchmark, version):
     df = pd.DataFrame()
     if (benchmark == "xdp1"):
-        rates = np.arange(17,19,0.1)
+        rates = np.arange(13,25,0.6)
     elif (benchmark == "xdp_map_access"):
         rates = np.arange(13.6,18.8,0.4)
     df["index"] = list(rates)

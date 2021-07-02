@@ -5,7 +5,7 @@ import argparse
 from os.path import expanduser
 
 default_ranges = {
-    "xdp1": (17,19,0.1),
+    "xdp1": (13,25,0.6),
     "xdp_map_access": (13.6,18.8,0.4),
     "xdp_redirect": (1,30,1),
 }
