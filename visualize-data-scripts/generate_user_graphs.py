@@ -26,9 +26,9 @@ def parse_file(name, benchmark):
 def get_mlffr(directory, run, benchmark, version):
     df = pd.DataFrame()
     if (benchmark == "xdp1"):
-        rates = np.arange(10,30,1)
+        rates = np.arange(17,19,0.1)
     elif (benchmark == "xdp_map_access"):
-        rates = np.arange(12,23,1)
+        rates = np.arange(13.6,18.8,0.4)
     df["index"] = list(rates)
     df.set_index("index", inplace=True)
     if version:
@@ -38,7 +38,7 @@ def get_mlffr(directory, run, benchmark, version):
     for v in versions:
         arr = []
         for x in rates:
-            data = parse_file(f'{directory}/{v}_{run}_{x}.txt', benchmark)
+            data = parse_file(f'{directory}/{v}_{run}_{round(x, 3)}.txt', benchmark)
             arr.append(sum(data) / len(data) / 10 ** 6)
         df[v] = arr
     fig = plt.figure()

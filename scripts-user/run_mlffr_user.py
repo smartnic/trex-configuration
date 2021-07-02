@@ -6,7 +6,7 @@ from os.path import expanduser
 
 default_ranges = {
     "xdp1": (17,19,0.1),
-    "xdp_map_access": (14.6,16,0.1),
+    "xdp_map_access": (13.6,18.8,0.4),
     "xdp_redirect": (1,30,1),
 }
 startTime = time.time()
@@ -17,9 +17,9 @@ parser.add_argument('-d', dest="directory", type=str, help='Directory', required
 parser.add_argument('-v', dest="version", type=str, help='Name of version (e.g o1, o2, k0, k1, k2, k3, k4)', required=False)
 parser.add_argument('-n', dest="number", type=int, help='Number of times each version should run', default=5)
 parser.add_argument('-c', dest="cores", type=int, help='Number of cores', default=14)
-parser.add_argument('-mS', dest="start", type=int, help='Start Mpps')
-parser.add_argument('-mE', dest="end", type=int, help='End Mpps')
-parser.add_argument('-i', dest="increment", type=int, help='Increment Mpps')
+parser.add_argument('-mS', dest="start", type=float, help='Start Mpps')
+parser.add_argument('-mE', dest="end", type=float, help='End Mpps')
+parser.add_argument('-i', dest="increment", type=float, help='Increment Mpps')
 
 args = parser.parse_args()
 versionList = []

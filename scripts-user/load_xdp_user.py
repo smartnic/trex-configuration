@@ -5,8 +5,8 @@ import argparse
 
 interfaces = ["ens3f1"]
 programs = {
-    "xdp1": ("xdp1_kern", "completed-programs/camera_ready/xdp1_kern_xdp1_0611_073defe_runtime"),
-    "xdp_map_access": ("xdp_map_access_kern", "completed-programs/camera_ready/simple_fw_xdp_map_access_kern_xdp_map_acces_0611_073defe_runtime"),
+    "xdp1": ("xdp1_kern", "completed-programs/camera_ready/0630_80b79d0_runtime_xl170/xdp1_kern_xdp1"),
+    "xdp_map_access": ("xdp_map_access_kern", "completed-programs/camera_ready/0630_80b79d0_runtime_xl170/xdp_map_access"),
     "xdp_redirect": ("xdp_redirect_kern", "completed-programs/camera_ready/kernel_samples_xdp_redirect_0611_073defe_runtime"),
 }
 parser = argparse.ArgumentParser(description='Information about Data')

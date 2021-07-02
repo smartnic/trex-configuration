@@ -7,8 +7,8 @@ from os.path import expanduser
 default_ranges = {
     "xdp2": (8.5, 10.5, 0.1),
     "xdp_fw": (1,15,1),
-    "xdp_router_ipv4": (1.5, 1.7, 0.01),
-    "xdp_fwd": (4.9, 5.1, 0.01),
+    "xdp_router_ipv4": (1.0, 2.3, 0.1),
+    "xdp_fwd": (4.4, 5.4, 0.1),
     "xdp_pktcntr": (1, 30, 2),
 }
 benchmarks = ["xdp2", "xdp_fw", "xdp_router_ipv4", "xdp_fwd", "xdp_pktcntr"]
@@ -18,9 +18,9 @@ parser.add_argument('-d', dest="directory", type=str, help='Directory', required
 parser.add_argument('-v', dest="version", type=str, help='Name of version (e.g o1, o2, k0, k1, k2, k3, k4)', required=False)
 parser.add_argument('-n', dest="number", type=int, help='Number of times each version should run', default=5)
 parser.add_argument('-c', dest="cores", type=int, help='Number of cores', default=14)
-parser.add_argument('-mS', dest="start", type=int, help='Start Mpps')
-parser.add_argument('-mE', dest="end", type=int, help='End Mpps')
-parser.add_argument('-i', dest="increment", type=int, help='Increment Mpps')
+parser.add_argument('-mS', dest="start", type=float, help='Start Mpps')
+parser.add_argument('-mE', dest="end", type=float, help='End Mpps')
+parser.add_argument('-i', dest="increment", type=float, help='Increment Mpps')
 args = parser.parse_args()
 home = expanduser("~")
 
