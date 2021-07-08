@@ -27,7 +27,7 @@ The experiment consists of two nodes, labeled node-0 and node-1. Node-0 serves a
 
 6) Get mac address for ens1f1 interface.(For the next step)
 
-7) Replace correct node0 in node0.config `sudo vim /usr/local/v2.87/stl/node0.config`
+7) Replace correct node0 in node0.config `sudo vim /usr/local/v2.87/node0.config`
 
 ##### Step 2.2: Update Node 0 (Katran) Configurations
 
