@@ -1,7 +1,6 @@
 import pandas as pd 
 import matplotlib.pyplot as plt
 import os 
-import seaborn as sns
 import argparse 
 
 def latency_graphs(directory, benchmark, run, gtype):
