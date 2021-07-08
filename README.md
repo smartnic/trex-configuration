@@ -1,10 +1,7 @@
 # Katran Performance Experiments
 
-### CloudLab Experiment Setup 
 
-[Estimated Human Time: 30 minutes]
-
-#### Step 1: Create Experiment
+### Step 1: Create Experiment
 
 Visit https://cloudlab.us/ and click the "Log in" button. Please use the CloudLab account username and password provided in our SIGCOMM21 artifact hotCRP submission to log into the CloudLab console.
 
@@ -15,7 +12,7 @@ Visit https://cloudlab.us/ and click the "Log in" button. Please use the CloudLa
 <img src="instruction-images/change-profile.png" width="700px" />
 
 ##### Step 1.3: Select katran-and-t-rex Profile
-<img src="instruction-images/katran-and-trex\ profile.png" width="700px" />
+<img src="instruction-images/katran-and-trex profile.png" width="700px" />
 
 ##### Step 1.4: Name Experiment (optional)
 <img src="instruction-images/name-expr.png" width="700px" />
@@ -35,7 +32,7 @@ If your experiment is successfully scheduled, it might still keep you waiting wi
 
 Contact us or the CloudLab mailing list (https://groups.google.com/g/cloudlab-users) if you have any difficulties.
 
-#### Step 2: Configure The Nodes
+### Step 2: Configure The Nodes
 
 The experiment consists of two nodes, labeled node-0 and node-1. Node-0 serves as the device-under-test (DUT) , which runs the **balancer_kern packet processing programs from katran**. Node-1 runs a traffic generator. By sending and receiving from the same machine, the traffic generator measures both the throughput and the round-trip latencies of packets that are processed by the device under test. The detailed setup is described in section 8 of the submitted paper.
 
@@ -53,7 +50,7 @@ The experiment consists of two nodes, labeled node-0 and node-1. Node-0 serves a
 
    ```export PYTHONPATH=/usr/local/v2.87/automation/trex_control_plane/interactive``` 
 
-4) `vim /usr/local/v2.87/stl/udp_for_benchmarks.py` and rewrite the file with the contents of udp_for_benchmarks_xl170_katran.py in this repository.
+4) `sudo vim /usr/local/v2.87/stl/udp_for_benchmarks.py` and rewrite the file with the contents of udp_for_benchmarks_xl170_katran.py in this repository.
 
 5) `sudo ip route add 10.200.200.1 via 10.10.1.1 dev ens1f1`
 
@@ -63,6 +60,10 @@ The experiment consists of two nodes, labeled node-0 and node-1. Node-0 serves a
 
 8) Get mac address for ens1f1 interface.(For the next step)
 
+9) Replace correct node0 in node0.config `sudo vim /usr/local/v2.87/stl/node0.config`
+
+10) Create run_mlff_katran.py from this repo. 
+
 ##### Step 2.2: Update Node 0 (Katran) Configurations
 
 1) `sudo su - `
@@ -70,3 +71,5 @@ The experiment consists of two nodes, labeled node-0 and node-1. Node-0 serves a
 2) Update mac address in `vim trex-configuration/katran/load_katran.sh` with the address you found in step 8 for step 2.1. 
 
 #### Step 3: Test Katran Setup 
+
+`nohup python3 -u run_mlffr_katran.py -b balancer_kern -data-jul-6 -n 3 -c 6 -mS 3 -mE 4 -i 0.1 > ~/run1.txt &`
