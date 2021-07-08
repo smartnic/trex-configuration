@@ -9,7 +9,8 @@ def rx(directory, benchmark, run, version):
     df["index"] = list(file.index)
     df.set_index("index", inplace=True)
     versions = ["k0", "k1", "k2", "k3", "k4", "o1", "o2"]
-    versions = ["k0", "k1", "k2", "k3", "k4", "k5", "k6", "k7", "k8",  "o2"]
+    versions = ["k9", "k1", "k2", "k3", "k4", "k5", "k6", "k7", "k8",  "o2"]
+    #versions = ["k1", "k2", "k3", "k4", "k5", "o2"]
     if version != "":
         versions = [version]
     if len(versions) > 1 and benchmark == "xdp2" or benchmark == "xdp_router_ipv4":
@@ -42,7 +43,8 @@ def rx_avg(directory, benchmark, runs):
         df = df.merge(new_df, how="outer", on=None, left_index=True, right_index=True)
     
     versions = ["k0", "k1", "k2", "k3", "k4", "o1", "o2"]
-    versions = ["k0", "k1", "k2", "k3", "k4", "k5", "k6", "k7", "k8",  "o2"]
+    versions = ["k9", "k1", "k2", "k3", "k4", "k5", "k6", "k7", "k8",  "o2"]
+    #versions = ["k1", "k2", "k3", "k4", "k5", "o2"]
     if benchmark == "xdp2" or benchmark == "xdp_router_ipv4":
         versions.remove("k2")
     for v in versions:

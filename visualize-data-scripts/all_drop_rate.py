@@ -6,10 +6,12 @@ import argparse
 
 def dropRate(directory, benchmark, run):
     df = pd.DataFrame()
-    file = pd.read_csv(f'{directory}/MLFFR_o1_t.txt', index_col=0)
+    file = pd.read_csv(f'{directory}/MLFFR_o2_t.txt', index_col=0)
     df["index"] = list(file.index)
     df.set_index("index", inplace=True)
     versions = ["o1", "o2", "k0", "k1", "k2", "k3", "k4"]
+    versions = ["k9", "k1", "k2", "k3", "k4", "k5", "k6", "k7", "k8",  "o2"]
+    #versions = ["k1", "k2", "k3", "k4", "k5", "o2"]
     if benchmark == "xdp2" or benchmark == "xdp_router_ipv4":
         versions.remove("k2")
     for i in versions:
